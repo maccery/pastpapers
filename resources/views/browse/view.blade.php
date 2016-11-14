@@ -21,5 +21,6 @@
             </li>
         @endforeach
     </ul>
+    @include('review.create')
 </div>
 @endsection
