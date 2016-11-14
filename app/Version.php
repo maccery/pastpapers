@@ -16,4 +16,9 @@ class Version extends Model
         return $this->belongsTo('App\Software');
     }
 
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
+
 }

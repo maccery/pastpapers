@@ -15,4 +15,5 @@ require('laravel-elixir-vue-2');
 
 elixir(function(mix) {
     mix.less('app.less');
+    mix.less('browse.less');
 });
