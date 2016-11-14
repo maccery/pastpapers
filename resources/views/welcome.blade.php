@@ -7,10 +7,13 @@
         <title>Meagle.org</title>
         <script src="https://use.typekit.net/kmj4cek.js"></script>
         <script>try{Typekit.load({ async: true });}catch(e){}</script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     </head>
     <body>
-        <div class="row">
-            Hey!
+        <div class="container">
+            <h1>welcome to <b>meagle.org</b></h1>
+            <h2>impartial software advice</h2>
+            <input type="text" class="input input-lg" placeholder="iOS 10">
         </div>
     </body>
 </html>
