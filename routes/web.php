@@ -10,10 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Software;
 
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/browse', function () {
-    return view('browse/view');
+    $software = Software::first();
+    $reviews = $software->reviews;
+
+    return view('browse/view', ['software' => $software, 'reviews' => $reviews]);
 });

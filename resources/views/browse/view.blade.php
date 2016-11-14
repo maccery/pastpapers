@@ -12,8 +12,11 @@
 <body>
 <div class="container">
     <h3 class="pull-right">meagle.org</h3>
-    <h1>iOS 10</h1>
-    <h2>"absolutely awful"</h2>
+    <h1>{{ $software->name }}</h1>
+    @foreach ($reviews as $review)
+        <h2>{{ $review->author->name }}</h2>
+        <p>{{ $review->description }}</p>
+    @endforeach
 </div>
 </body>
 </html>

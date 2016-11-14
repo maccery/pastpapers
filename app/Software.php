@@ -11,9 +11,17 @@ class Software extends Model
         'name',
     ];
 
-    public function version()
+    public function versions()
     {
         return $this->hasMany('App\Version');
+    }
+
+    /**
+     * Returns all the reviews for all versions
+     */
+    public function reviews()
+    {
+        return $this->hasManyThrough('App\Review', 'App\Version');
     }
 
 }
