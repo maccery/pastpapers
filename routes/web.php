@@ -15,9 +15,17 @@ use App\Software;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/browse', function () {
-    $software = Software::first();
-    $reviews = $software->reviews;
 
-    return view('browse/view', ['software' => $software, 'reviews' => $reviews]);
-});
+Route::get('/browse', function () {
+
+    $softwares = Software::all();
+    return view('browse/index', ['softwares' => $softwares]);
+})->name('browse');
+
+Route::get('/browse/{name}', function ($name) {
+    $software = Software::where('name', $name)->first();
+    $reviews = $software->reviews;
+    $versions = $software->versions;
+
+    return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions]);
+})->name('browse_name');
