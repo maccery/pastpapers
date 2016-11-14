@@ -29,6 +29,10 @@ Route::get('/browse/{name}', function ($name) {
 
     return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions]);
 })->name('browse_name');
+
+
+Route::post('/post', 'PostController@store')->middleware('auth')->name('post_review');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

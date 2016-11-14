@@ -9,6 +9,9 @@ class Review extends Model
 
     protected $fillable = [
         'description',
+        'user_id',
+        'version_id',
+        'software_id'
     ];
 
     public function version()
