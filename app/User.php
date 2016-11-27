@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Returns all the reviews for all versions
+     */
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
 }

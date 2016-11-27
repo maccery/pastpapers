@@ -11,13 +11,13 @@
 |
 */
 use App\Software;
+use App\User;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/browse', function () {
-
     $softwares = Software::all();
     return view('browse/index', ['softwares' => $softwares]);
 })->name('browse');
@@ -38,6 +38,12 @@ Route::get('/browse/{name}/{version}', function ($name, $version) {
 
     return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions, 'version_id' => $version->id]);
 })->name('browse_by_version');
+
+Route::get('/user/{user_id}', function ($user_id) {
+    $user = User::where('id', $user_id)->first();
+
+    return view('user/view', ['user' => $user]);
+})->name('view_user');
 
 
 Route::post('/post', 'PostController@store')->middleware('auth')->name('post_review');

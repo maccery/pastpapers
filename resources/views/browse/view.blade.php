@@ -11,19 +11,7 @@
         </ul>
     </div>
     <div class="col-sm-10">
-        <ul class="list list-inline list-unstyled">
-            @foreach ($reviews as $review)
-                <li>
-                    <h4>Version {{ $review->version->version }}</h4>
-                    <h3>"{{ $review->description }}"</h3>
-                    <p>
-                        <small>By {{ $review->author->name }}<br>
-                            <b>Verified techcrunch.com</b>. 10,000 reviews. 190 Mekarma
-                        </small>
-                    </p>
-                </li>
-            @endforeach
-        </ul>
+        @include('segment.reviews', ['reviews' => $reviews])
         @if(isset($version_id)):
         @include('review.create', ['version_id' => $version_id])
         @endif
