@@ -12,9 +12,8 @@ class PostController extends Controller
     {
         $software = Review::create([
             'description' => $request->input('description'),
-            'version_id' => 1,
-            'user_id' => 1,
-            'software_id' => 1
+            'version_id' => $request->input('version_id'),
+            'user_id' => $request->user()->id,
         ]);
         return back();
     }

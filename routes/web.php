@@ -30,6 +30,15 @@ Route::get('/browse/{name}', function ($name) {
     return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions]);
 })->name('browse_name');
 
+Route::get('/browse/{name}/{version}', function ($name, $version) {
+    $software = Software::where('name', $name)->first();
+    $version = $software->versions()->where('version', $version)->first();
+    $reviews = $version->reviews;
+    $versions = $software->versions;
+
+    return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions, 'version_id' => $version->id]);
+})->name('browse_by_version');
+
 
 Route::post('/post', 'PostController@store')->middleware('auth')->name('post_review');
 
