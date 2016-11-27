@@ -1,0 +1,21 @@
+{
+  "name": "Meagle",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Tom Macmichael <tommacmichael@me.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/maccery/meagle-php",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
