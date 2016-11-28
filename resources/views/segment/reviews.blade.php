@@ -3,10 +3,7 @@
         <li>
             <h4>Version {{ $review->version->version }}</h4>
             <h3>"{{ $review->description }}"</h3>
-            <h4>{{ $review->votes->sum('vote') }} votes
-                <a href="{{ route('vote_review', ['review_id' => $review->id, 'vote' => -1]) }}">Downvote</a>
-                <a href="{{ route('vote_review', ['review_id' => $review->id, 'vote' => 1]) }}">Upvote</a>
-            </h4>
+            @include('review.vote', ['review' => $review])
             <p>
                 <small>By <a href="{{ route('view_user', $review->author->id) }}">{{ $review->author->name }}</a>
                 </small>

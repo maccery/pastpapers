@@ -29,4 +29,8 @@ class Review extends Model
         return $this->hasMany('App\Vote');
     }
 
+    public function votedFor()
+    {
+        return $this->hasOne('App\Vote')->authored();
+    }
 }
