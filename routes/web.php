@@ -23,14 +23,18 @@ Route::get('/browse', function () {
 })->name('browse');
 
 Route::get('/browse/{software}', function (App\Software $software) {
-    $reviews = $software->reviews;
+    $reviews = $software->reviews->sortByDesc(function($reviews) {
+        return $reviews->votes->sum('vote');
+    });
     $versions = $software->versions;
 
     return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions]);
 })->name('browse_name');
 
 Route::get('/browse/{software}/{version}', function (App\Software $software, App\Version $version) {
-    $reviews = $version->reviews;
+    $reviews = $version->reviews->sortByDesc(function($reviews) {
+        return $reviews->votes->sum('vote');
+    });
     $versions = $software->versions;
 
     return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions, 'version_id' => $version->id]);
