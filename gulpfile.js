@@ -14,6 +14,7 @@ require('laravel-elixir-vue-2');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
-    mix.less('browse.less');
+    mix.less('app.less')
+        .less('browse.less')
+        .copy('bower_components/bootstrap/fonts', 'public/fonts');
 });
