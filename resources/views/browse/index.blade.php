@@ -9,7 +9,7 @@
                     <div class="panel-body">
                         <ul class="list list-unstyled">
                             @foreach ($softwares as $software)
-                                <li><a href="{{ route('browse_name', $software->name) }}">{{ $software->name }}</a></li>
+                                <li><a href="{{ route('browse_name', $software->id) }}">{{ $software->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>

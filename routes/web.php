@@ -11,7 +11,7 @@
 |
 */
 use App\Software;
-use App\User;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,31 +22,35 @@ Route::get('/browse', function () {
     return view('browse/index', ['softwares' => $softwares]);
 })->name('browse');
 
-Route::get('/browse/{name}', function ($name) {
-    $software = Software::where('name', $name)->first();
+Route::get('/browse/{software}', function (App\Software $software) {
     $reviews = $software->reviews;
     $versions = $software->versions;
 
     return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions]);
 })->name('browse_name');
 
-Route::get('/browse/{name}/{version}', function ($name, $version) {
-    $software = Software::where('name', $name)->first();
-    $version = $software->versions()->where('version', $version)->first();
+Route::get('/browse/{software}/{version}', function (App\Software $software, App\Version $version) {
     $reviews = $version->reviews;
     $versions = $software->versions;
 
     return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions, 'version_id' => $version->id]);
 })->name('browse_by_version');
 
-Route::get('/user/{user_id}', function ($user_id) {
-    $user = User::where('id', $user_id)->first();
-
+Route::get('/user/{user}', function (App\User $user) {
     return view('user/view', ['user' => $user]);
 })->name('view_user');
 
 
 Route::post('/post', 'PostController@store')->middleware('auth')->name('post_review');
+Route::get('/vote/{review}/{vote}', function(App\Review $review, $vote, Request $request) {
+    App\Vote::create([
+        'vote' => $vote,
+        'review_id' => $review->id,
+        'user_id' => $request->user()->id,
+    ]);
+
+    return back();
+})->middleware('auth')->name('vote_review');
 
 Auth::routes();
 

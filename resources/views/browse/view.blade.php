@@ -5,7 +5,7 @@
         <ul class="list list-inline list-unstyled">
             @foreach ($versions as $version)
                 <li>
-                    <a href="{{ route('browse_by_version', [$software->name, $version->version]) }}">Version {{ $version->version }}</a>
+                    <a href="{{ route('browse_by_version', [$software->id, $version->id]) }}">Version {{ $version->version }}</a>
                 </li>
             @endforeach
         </ul>
