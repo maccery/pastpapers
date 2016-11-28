@@ -34,4 +34,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Review');
     }
+
+    /**
+     * Returns all the votes on reviews by this author
+     */
+    public function votes()
+    {
+        return $this->hasManyThrough('App\Vote', 'App\Review');
+    }
 }

@@ -3,6 +3,7 @@
     <div class="row">
         <div class="container">
             <h1>{{ $user->name }}</h1>
+            <h2>{{ $user->votes->sum('vote') }} points</h2>
         </div>
     </div>
     <div class="row">
