@@ -23,7 +23,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Route::pattern('vote', '-?[1]{1}');
 
         parent::boot();
     }

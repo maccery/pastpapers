@@ -42,11 +42,9 @@ Route::get('/user/{user}', function (App\User $user) {
 
 
 Route::post('/post', 'PostController@store')->middleware('auth')->name('post_review');
-Route::get('/vote/{review}/{vote}', function(App\Review $review, $vote, Request $request) {
-    App\Vote::create([
+Route::get('/vote/{review}/{vote}', function (App\Review $review, $vote, Request $request) {
+    App\Vote::updateOrCreate(['review_id' => $review->id, 'user_id' => $request->user()->id], [
         'vote' => $vote,
-        'review_id' => $review->id,
-        'user_id' => $request->user()->id,
     ]);
 
     return back();
