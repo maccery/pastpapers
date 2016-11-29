@@ -22,6 +22,11 @@ class Version extends Model
         return $this->hasMany('App\Review');
     }
 
+    public function versionVotes()
+    {
+        return $this->hasMany('App\VersionVote');
+    }
+
     public function canLeaveReview()
     {
         return $this->confirmed_real and $this->isReleased();
@@ -33,4 +38,8 @@ class Version extends Model
         return $this->confirmed_release_date and $date_time->now() >= $this->release_date;
     }
 
+    public function votedFor()
+    {
+        return $this->hasOne('App\VersionVote')->authored();
+    }
 }

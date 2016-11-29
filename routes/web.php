@@ -63,6 +63,23 @@ Route::get('/vote/{review}/{vote}', function (App\Review $review, $vote, Request
     return back();
 })->middleware('auth')->name('vote_review');
 
+Route::get('/vote_version/{version}/{vote}', function (App\Version $version, $vote, Request $request) {
+    $keys = ['version_id' => $version->id, 'user_id' => $request->user()->id];
+
+    $current_vote = App\VersionVote::where($keys)->first();
+    if (isset($current_vote))
+    {
+        $current_vote->delete();
+    }
+    if (!isset($current_vote) or isset($current_vote) and $current_vote->vote != $vote) {
+        App\VersionVote::updateOrCreate($keys, [
+            'vote' => $vote,
+        ]);
+    }
+
+    return back();
+})->middleware('auth')->name('vote_version');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
