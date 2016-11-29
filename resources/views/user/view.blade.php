@@ -6,6 +6,13 @@
             <h2>{{ $user->votes->sum('vote') }} points</h2>
         </div>
     </div>
+@if($user->votes->sum('vote') < 1)
+<div class="row">
+    <div class="container alert alert-warning">
+        <p>This user has very few points. Be wary of reviews.</p>
+    </div>
+</div>
+@endif
     <div class="row">
         <div class="container">
             <h2>Reviews</h2>
