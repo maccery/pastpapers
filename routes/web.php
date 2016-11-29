@@ -37,7 +37,7 @@ Route::get('/browse/{software}/{version}', function (App\Software $software, App
     });
     $versions = $software->versions;
 
-    return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions, 'version_id' => $version->id]);
+    return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions, 'version_id' => $version->id, 'current_version' => $version]);
 })->name('browse_by_version');
 
 Route::get('/user/{user}', function (App\User $user) {

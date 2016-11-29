@@ -8,7 +8,7 @@ class Software extends Model
 {
 
     protected $fillable = [
-        'name',
+        'name'
     ];
 
     public function versions()
