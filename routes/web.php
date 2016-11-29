@@ -40,6 +40,10 @@ Route::get('/browse/{software}/{version}', function (App\Software $software, App
     return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions, 'version_id' => $version->id, 'current_version' => $version]);
 })->name('browse_by_version');
 
+Route::get('/suggest/{version}', function (App\Version $version) {
+    return view('browse/suggest_date', ['version' => $version]);
+})->name('suggest_dates');
+
 Route::get('/user/{user}', function (App\User $user) {
     return view('user/view', ['user' => $user]);
 })->name('view_user');
@@ -79,6 +83,24 @@ Route::get('/vote_version/{version}/{vote}', function (App\Version $version, $vo
 
     return back();
 })->middleware('auth')->name('vote_version');
+
+Route::get('/vote_suggested_date/{suggested_release_date}/{vote}', function (App\SuggestedReleaseDate $suggested_release_date, $vote, Request $request) {
+    $keys = ['user_id' => $request->user()->id,
+        'suggested_release_date_id' => $suggested_release_date->id,
+    ];
+    $current_vote = App\SuggestedReleaseDateVote::where($keys)->first();
+    if (isset($current_vote))
+    {
+        $current_vote->delete();
+    }
+    if (!isset($current_vote) or isset($current_vote) and $current_vote->vote != $vote) {
+        App\SuggestedReleaseDateVote::updateOrCreate($keys, [
+            'vote' => $vote,
+        ]);
+    }
+
+    return back();
+})->middleware('auth')->name('vote_suggested_date');
 
 Auth::routes();
 

@@ -17,8 +17,18 @@
             </table>
         </div>
         <div class="col-sm-6">
-            <p>Does this version exist?</p>
-            @include('review.version_vote', ['version' => $version])
+            @if(!$version->confirmed_real or !$version->confirmed_release_date)
+            <b>Help improve our data</b>
+            @endif
+
+            @if(!$version->confirmed_real)
+                <p>Does this version exist?</p>
+                @include('review.version_vote', ['version' => $version])
+            @endif
+
+            @if(!$version->confirmed_release_date)
+            <p><a href="{{ route('suggest_dates', ['version' => $version]) }}">Suggest a release date</a></p>
+            @endif
         </div>
     </div>
 </div>
