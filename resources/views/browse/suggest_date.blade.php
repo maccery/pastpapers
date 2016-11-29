@@ -9,4 +9,5 @@
         <p>We're not sure which release date is right yet. Help us by voting below.</p>
         @include('browse.suggested_dates', ['suggested_dates' => $version->suggestedDates->all()])
     @endif
+@include('browse.create_suggest', ['version' => $version])
 @endsection
