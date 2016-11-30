@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "install": "bower install && gulp --production",
     "start": "npm install && bower install && gulp --production",
     "dev": "npm install && bower install && gulp watch"
   },
