@@ -39,8 +39,6 @@
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize",
             "php artisan down",
-            "bower install",
-            "gulp --production",
             "php artisan migrate --force",
             "php artisan up"
         ],
