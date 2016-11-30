@@ -6,7 +6,6 @@
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
-    "gulp": "^3.9.1",
     "jquery": "^3.1.0",
     "laravel-elixir": "^6.0.0-14",
     "laravel-elixir-vue-2": "^0.2.0",
@@ -20,6 +19,7 @@
     "node": "4.1.1"
   },
   "dependencies": {
+    "gulp": "^3.9.1",
     "bower": "^1.8.0"
   }
 }
