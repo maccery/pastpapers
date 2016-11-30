@@ -39,7 +39,9 @@
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize",
             "php artisan down",
-            "php artisan migrate",
+            "bower install",
+            "gulp --production",
+            "php artisan migrate --force",
             "php artisan up"
         ],
         "post-update-cmd": [
