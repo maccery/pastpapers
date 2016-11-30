@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "postinstall": "npm install && bower install && gulp --production",
-    "dev": "npm install && bower install && gulp watch"
+    "postinstall": "bower install && gulp --production",
+    "dev": "bower install && gulp watch"
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
