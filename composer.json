@@ -40,7 +40,6 @@
             "php artisan optimize",
             "php artisan down",
             "php artisan migrate",
-            "gulp --production",
             "php artisan up"
         ],
         "post-update-cmd": [
