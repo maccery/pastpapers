@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+<form class="form-horizontal" role="form" method="POST" action="{{ url('/register', [], true) }}">
     {{ csrf_field() }}
 
     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
