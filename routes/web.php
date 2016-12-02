@@ -26,7 +26,7 @@ Route::get('/browse/{software}', function (App\Software $software) {
     $reviews = $software->reviews->sortByDesc(function($reviews) {
         return $reviews->votes->sum('vote');
     });
-    $versions = $software->versions;
+    $versions = $software->versions->where('confirmed_real', true);
 
     return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions]);
 })->name('browse_name');
@@ -35,10 +35,19 @@ Route::get('/browse/{software}/{version}', function (App\Software $software, App
     $reviews = $version->reviews->sortByDesc(function($reviews) {
         return $reviews->votes->sum('vote');
     });
-    $versions = $software->versions;
+    $versions = $software->versions->where('confirmed_real', true);
 
     return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions, 'version_id' => $version->id, 'current_version' => $version]);
 })->name('browse_by_version');
+
+Route::get('/unconfirmed/{software}', function (App\Software $software) {
+    $reviews = $software->reviews->sortByDesc(function($reviews) {
+        return $reviews->votes->sum('vote');
+    });
+    $versions = $software->versions;
+
+    return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions]);
+})->name('unconfirmed_versions');
 
 Route::get('/suggest/{version}', function (App\Version $version) {
     return view('browse/suggest_date', ['version' => $version]);

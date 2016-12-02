@@ -24,6 +24,8 @@ class PostSuggestDateRequest extends FormRequest
     public function rules()
     {
         return [
+            'version_id' => 'required|exists:versions,id',
+            'release_date' => 'required|unique:suggested_release_dates|date',
         ];
     }
 }
