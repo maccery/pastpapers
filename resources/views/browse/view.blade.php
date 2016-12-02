@@ -8,6 +8,9 @@
                 <a class="{{ (isset($version_id) and $version->id == $version_id) ? 'voted' : 'not-voted' }}" href="{{ route('browse_by_version', [$software->id, $version->id]) }}">Version {{ $version->version }}</a>
             </li>
         @endforeach
+        <li>
+            <a href="{{ route('create_version', ['software' => $software]) }}"><span class="glyphicon glyphicon-plus"></span></a>
+        </li>
     </ul>
     @if(isset($current_version))
         @include('segment.version_info', ['version' => $current_version])

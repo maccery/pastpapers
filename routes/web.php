@@ -44,6 +44,10 @@ Route::get('/suggest/{version}', function (App\Version $version) {
     return view('browse/suggest_date', ['version' => $version]);
 })->name('suggest_dates');
 
+Route::get('/create_version/{software}', function (App\Software $software) {
+    return view('browse/create_version', ['software' => $software]);
+})->name('create_version');
+
 Route::get('/user/{user}', function (App\User $user) {
     return view('user/view', ['user' => $user]);
 })->name('view_user');
@@ -51,6 +55,7 @@ Route::get('/user/{user}', function (App\User $user) {
 
 Route::post('/post', 'PostController@store')->middleware('auth')->name('post_review');
 Route::post('/post_suggest_date', 'PostSuggestDateController@store')->middleware('auth')->name('post_suggest_date');
+Route::post('/post_create_verison', 'PostCreateVersionController@store')->middleware('auth')->name('post_create_version');
 
 Route::get('/vote/{review}/{vote}', function (App\Review $review, $vote, Request $request) {
     $keys = ['review_id' => $review->id, 'user_id' => $request->user()->id];

@@ -9,7 +9,7 @@ class Version extends Model
 {
 
     protected $fillable = [
-        'id', 'verison', 'release_date', 'confirmed_real', 'confirmed_release_date'
+        'id', 'version', 'release_date', 'confirmed_real', 'confirmed_release_date', 'software_id'
     ];
 
     public function software()
