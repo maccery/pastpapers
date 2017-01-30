@@ -23,4 +23,5 @@
         </ul>
     </div>
 @endif
+@include('errors.generic')
 @endsection

@@ -35,7 +35,8 @@ Route::group(['middleware' => 'web'], function() {
     Route::get('/browse/{software}/{version}', function (App\Software $software, App\Version $version) {
         $reviews = $version->reviews->sortByDesc(function ($reviews) {
             return $reviews->votes->sum('vote');
-        })->paginate(3);
+        });
+        
         $versions = $software->versions->where('confirmed_real', true);
 
         return view('browse/view', [

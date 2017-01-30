@@ -15,4 +15,5 @@
     @endif
         {{ csrf_field() }}
     </form>
+    @include('errors.generic')
 @endif

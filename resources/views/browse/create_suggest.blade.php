@@ -11,4 +11,5 @@
     <button class="btn btn-default">Suggest</button>
 @endif
     {{ csrf_field() }}
+@include('errors.generic')
 </form>
