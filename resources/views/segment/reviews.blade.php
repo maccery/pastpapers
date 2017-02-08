@@ -17,6 +17,7 @@
                         @endif
                     </li>
                     <li>{{ $review->author->votes->sum('vote') }} points</li>
+                    <li>{{ $review->created_at->diffForHumans() }}</li>
                 </ul>
             </div>
         </td>
