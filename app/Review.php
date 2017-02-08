@@ -13,7 +13,8 @@ class Review extends Model
         'description',
         'user_id',
         'version_id',
-        'software_id'
+        'software_id',
+        'title',
     ];
 
     public function version()

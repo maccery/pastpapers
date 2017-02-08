@@ -5,7 +5,8 @@
             @include('review.vote', ['review' => $review])
         </td>
         <td>
-            <h3>"{{ $review->description }}"</h3>
+            <h3>"{{ $review->title }}"</h3>
+            <p>{{ $review->description }}</p>
             <div class="pull-right">
                 <ul class="list list-unstyled list-inline small">
                     <li><a href="{{ route('view_user', $review->author->id) }}">{{ $review->author->name }}</a></li>

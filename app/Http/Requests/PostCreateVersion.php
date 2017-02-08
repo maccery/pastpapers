@@ -25,7 +25,7 @@ class PostCreateVersion extends FormRequest
     {
         return [
             'software_id' => 'exists:softwares,id',
-            'version_name' => 'required|string|unique:versions,version'
+            'version_name' => 'required|string|unique:versions,version',
         ];
     }
 }

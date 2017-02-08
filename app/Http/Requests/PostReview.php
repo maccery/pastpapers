@@ -25,6 +25,7 @@ class PostReview extends FormRequest
     {
         return [
             'description' => 'required',
+            'title' => 'required',
         ];
     }
 }

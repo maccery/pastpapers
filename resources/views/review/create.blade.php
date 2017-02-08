@@ -5,6 +5,7 @@
     <form method="POST" action="{{ route('post_review') }}">
         <div class="form-group">
             <input type="hidden" name="version_id" value="{{ $current_version->id }}">
+            <input class="form-control" name="title" class="input-group input-lg" placeholder="Review title">
             <textarea class="form-control" rows="5" name="description" class="input-group input-lg" placeholder="Your review here"></textarea>
         </div>
     @if (Auth::guest())
