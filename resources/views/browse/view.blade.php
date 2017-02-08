@@ -19,7 +19,15 @@
     @if(isset($current_version))
         @include('segment.confirmation_warnings', ['version' => $current_version])
     @endif
-    @if($version->canLeaveReview())
+    @if(isset($current_version) and $current_version->canLeaveReview())
+        <div class="container">
+            <div class="row">
+                <b>Top tags</b>
+                <div>
+                    @include('segment.tags', ['tags' => $current_version->topTags()])
+                </div>
+            </div>
+        </div>
         @include('segment.reviews', ['reviews' => $reviews->slice(0, 4)])
         @include('segment.other_reviews', ['reviews' => $reviews->slice(4)])
     @endif

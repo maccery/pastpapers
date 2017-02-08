@@ -5,7 +5,7 @@
             @include('review.vote', ['review' => $review])
         </td>
         <td>
-            <h3>"{{ $review->title }}"</h3>
+            <a href="{{ route('review', ['review' => $review]) }}"><h3>"{{ $review->title }}"</h3></a>
             <p>{{ $review->description }}</p>
             <p>@include('segment.tags', ['tags' => $review->tags])</p>
             <div class="pull-right">

@@ -32,11 +32,3 @@
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <b>Top tags</b>
-        <div>
-        @include('segment.tags', ['tags' => $version->topTags()])
-        </div>
-    </div>
-</div>

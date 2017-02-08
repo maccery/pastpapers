@@ -18,6 +18,10 @@ Route::group(['middleware' => 'web'], function() {
         return view('welcome');
     });
 
+    Route::get('/review/{review}', function (App\Review $review) {
+        return view('review/index', ['review' => $review]);
+    })->name('review');
+
     Route::get('/browse', function () {
         $softwares = Software::all();
         return view('browse/index', ['softwares' => $softwares]);
