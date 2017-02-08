@@ -42,4 +42,21 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough('App\Vote', 'App\Review');
     }
+
+    public function emailDomain() {
+        $email_parts = explode('@', $this->email);
+
+        return $email_parts[1];
+    }
+
+    public function isTopUser() {
+        $top_email_domains = array(
+            'techcrunch.com',
+            'ed.ac.uk',
+            'wired.com',
+            'me.com',
+        );
+
+        return in_array($this->emailDomain(), $top_email_domains);
+    }
 }
