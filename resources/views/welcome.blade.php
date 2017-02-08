@@ -4,6 +4,8 @@
         <h1>welcome to <b>meagle.org</b></h1>
         <h3><a href="{{ route('browse') }}">browse >></a></h3>
 
+        @include('segment.search_box')
+
         <h2>How it works</h2>
         <p><b>Stage 1</b> A piece of software is published</p>
         <p><b>Stage 2</b> This is crowd-sourced into our system</p>
