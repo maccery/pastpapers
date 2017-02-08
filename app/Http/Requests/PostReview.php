@@ -24,8 +24,8 @@ class PostReview extends FormRequest
     public function rules()
     {
         return [
-            'description' => 'required',
-            'title' => 'required',
+            'description' => 'required|min:80',
+            'title' => 'required|min:30',
             'negative' => 'sometimes',
             'positive' => 'sometimes',
         ];

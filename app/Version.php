@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Version extends Model
 {
@@ -46,5 +47,23 @@ class Version extends Model
     public function votedFor()
     {
         return $this->hasOne('App\VersionVote')->authored();
+    }
+
+
+    public function topTags() {
+        return Tag::whereIn('id', function ($query) {
+            $query->selectRaw('tag_id FROM  (
+            SELECT
+ COUNT(tag_id) total, tag_id
+FROM tags TT, taggables T, reviews R, versions V 
+WHERE V.id = R.version_id 
+AND T.tag_id = TT.id
+AND T.taggable_id = R.id 
+AND T.taggable_type = \'App\\\Review\' 
+AND V.id = ?
+GROUP BY tag_id
+ORDER BY total DESC
+LIMIT 3) B', [$this->id]);
+        })->get();
     }
 }

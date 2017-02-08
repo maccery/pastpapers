@@ -41,4 +41,5 @@ class Review extends Model
     {
         return $this->hasOne('App\Vote')->authored();
     }
+
 }
