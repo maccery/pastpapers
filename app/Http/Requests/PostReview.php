@@ -26,6 +26,8 @@ class PostReview extends FormRequest
         return [
             'description' => 'required',
             'title' => 'required',
+            'negative' => 'sometimes',
+            'positive' => 'sometimes',
         ];
     }
 }

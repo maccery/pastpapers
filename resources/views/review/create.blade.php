@@ -7,6 +7,8 @@
             <input type="hidden" name="version_id" value="{{ $current_version->id }}">
             <input class="form-control" name="title" class="input-group input-lg" placeholder="Review title">
             <textarea class="form-control" rows="5" name="description" class="input-group input-lg" placeholder="Your review here"></textarea>
+            <input class="form-control" name="negative" class="input-group input-lg" placeholder="Negative tags">
+            <input class="form-control" name="positive" class="input-group input-lg" placeholder="Positive tags">
         </div>
     @if (Auth::guest())
         <p><small><a href="{{ url('/register') }}">Register</a> to submit</small></p>

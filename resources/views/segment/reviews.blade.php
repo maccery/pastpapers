@@ -7,6 +7,7 @@
         <td>
             <h3>"{{ $review->title }}"</h3>
             <p>{{ $review->description }}</p>
+            <p>@include('segment.tags', ['tags' => $review->tags])</p>
             <div class="pull-right">
                 <ul class="list list-unstyled list-inline small">
                     <li><a href="{{ route('view_user', $review->author->id) }}">{{ $review->author->name }}</a></li>
