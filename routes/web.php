@@ -71,6 +71,10 @@ Route::group(['middleware' => 'web'], function() {
         return view('browse/create_version', ['software' => $software]);
     })->name('create_version');
 
+    Route::get('/create_software', function () {
+        return view('browse/create_software');
+    })->name('create_software');
+
     Route::get('/user/{user}', function (App\User $user) {
         return view('user/view', ['user' => $user]);
     })->name('view_user');
@@ -80,6 +84,8 @@ Route::group(['middleware' => 'web'], function() {
     Route::post('/post_suggest_date', 'PostSuggestDateController@store')->middleware('auth')->name('post_suggest_date');
     Route::post('/post_create_verison',
         'PostCreateVersionController@store')->middleware('auth')->name('post_create_version');
+    Route::post('/post_create_software',
+        'PostCreateSoftwareController@store')->middleware('auth')->name('post_create_software');
 
     Route::get('/vote/{review}/{vote}', function (App\Review $review, $vote, Request $request) {
         $keys = ['review_id' => $review->id, 'user_id' => $request->user()->id];
