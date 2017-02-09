@@ -19,4 +19,10 @@
             @include('segment.reviews', ['reviews' => $user->reviews->all()])
         </div>
     </div>
+    <div class="row">
+        <div class="container">
+            <h2>How my score was calculated</h2>
+            @include('user.points_history', ['votes' => $user->votes])
+        </div>
+    </div>
 @endsection
