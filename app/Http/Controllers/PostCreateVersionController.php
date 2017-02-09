@@ -11,6 +11,7 @@ class PostCreateVersionController extends Controller
         $version = \App\Version::create([
             'software_id' => $request->input('software_id'),
             'version' => $request->input('version_name'),
+            'user_id' => $request->user()->id,
         ]);
         return back();
     }

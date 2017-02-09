@@ -3,14 +3,22 @@
 namespace App;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Database\Eloquent\Model;
 
 class Version extends Model
 {
 
+    use Votable;
+
     protected $fillable = [
-        'id', 'version', 'release_date', 'confirmed_real', 'confirmed_release_date', 'software_id'
+        'id',
+        'version',
+        'release_date',
+        'confirmed_real',
+        'confirmed_release_date',
+        'software_id',
+        'user_id',
     ];
 
     public function software()
@@ -21,11 +29,6 @@ class Version extends Model
     public function reviews()
     {
         return $this->hasMany('App\Review');
-    }
-
-    public function votes()
-    {
-        return $this->morphMany('App\Vote', 'votable');
     }
 
     public function suggestedDates()

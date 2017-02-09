@@ -8,7 +8,8 @@ class Software extends Model
 {
 
     protected $fillable = [
-        'name'
+        'name',
+        'user_id',
     ];
 
     public function versions()

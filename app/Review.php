@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Review extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Votable;
 
     protected $fillable = [
         'description',
@@ -25,11 +25,6 @@ class Review extends Model
     public function author()
     {
         return $this->belongsTo('App\User', 'user_id');
-    }
-
-    public function votes()
-    {
-        return $this->morphMany('App\Vote', 'votable');
     }
 
     public function tags()

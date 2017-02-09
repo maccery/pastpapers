@@ -88,61 +88,7 @@ Route::group(['middleware' => 'web'], function() {
     Route::post('/post_create_software',
         'PostCreateSoftwareController@store')->middleware('auth')->name('post_create_software');
 
-    Route::get('/vote/{review}/{vote}', function (App\Review $review, $vote, Request $request) {
-        $keys = [
-            'votable_id' => $review->id,
-            'votable_type' => 'App\Review',
-            'user_id' => $request->user()->id,
-            'votable_owner_id' => $review->user_id,
-        ];
-
-        $current_vote = App\Vote::where($keys)->first();
-        if (isset($current_vote)) {
-            $current_vote->delete();
-        }
-        if (!isset($current_vote) or isset($current_vote) and $current_vote->vote != $vote) {
-            App\Vote::updateOrCreate($keys, [
-                'vote' => $vote,
-            ]);
-        }
-
-        return back();
-    })->middleware('auth')->name('vote_review');
-
-    Route::get('/vote_version/{version}/{vote}', function (App\Version $version, $vote, Request $request) {
-        $keys = ['version_id' => $version->id, 'user_id' => $request->user()->id];
-
-        $current_vote = App\VersionVote::where($keys)->first();
-        if (isset($current_vote)) {
-            $current_vote->delete();
-        }
-        if (!isset($current_vote) or isset($current_vote) and $current_vote->vote != $vote) {
-            App\VersionVote::updateOrCreate($keys, [
-                'vote' => $vote,
-            ]);
-        }
-
-        return back();
-    })->middleware('auth')->name('vote_version');
-
-    Route::get('/vote_suggested_date/{suggested_release_date}/{vote}',
-        function (App\SuggestedReleaseDate $suggested_release_date, $vote, Request $request) {
-            $keys = [
-                'user_id' => $request->user()->id,
-                'suggested_release_date_id' => $suggested_release_date->id,
-            ];
-            $current_vote = App\SuggestedReleaseDateVote::where($keys)->first();
-            if (isset($current_vote)) {
-                $current_vote->delete();
-            }
-            if (!isset($current_vote) or isset($current_vote) and $current_vote->vote != $vote) {
-                App\SuggestedReleaseDateVote::updateOrCreate($keys, [
-                    'vote' => $vote,
-                ]);
-            }
-
-            return back();
-        })->middleware('auth')->name('vote_suggested_date');
+    Route::get('/vote/{type}/{votable_id}/{vote}', ['uses' => 'PostVoteController@store'])->name('vote_review');
 
     Auth::routes();
 

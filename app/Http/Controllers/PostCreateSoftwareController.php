@@ -10,6 +10,7 @@ class PostCreateSoftwareController extends Controller
     {
         \App\Software::create([
             'name' => $request->input('name'),
+            'user_id' => $request->user()->id,
         ]);
         return back();
     }
