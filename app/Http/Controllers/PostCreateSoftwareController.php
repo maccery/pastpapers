@@ -8,7 +8,7 @@ class PostCreateSoftwareController extends Controller
 {
     public function store(PostCreateSoftware $request)
     {
-        $version = \App\Software::create([
+        \App\Software::create([
             'name' => $request->input('name'),
         ]);
         return back();

@@ -18,6 +18,7 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -40,7 +41,7 @@ class User extends Authenticatable
      */
     public function votes()
     {
-        return $this->hasManyThrough('App\Vote', 'App\Review');
+        return $this->hasMany('App\Vote', 'votable_owner_id');
     }
 
     public function emailDomain() {
@@ -58,5 +59,9 @@ class User extends Authenticatable
         );
 
         return in_array($this->emailDomain(), $top_email_domains);
+    }
+
+    public function getPointsAttribute() {
+        return $this->votes->sum('vote');
     }
 }

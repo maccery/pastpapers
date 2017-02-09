@@ -23,9 +23,9 @@ class Version extends Model
         return $this->hasMany('App\Review');
     }
 
-    public function versionVotes()
+    public function votes()
     {
-        return $this->hasMany('App\VersionVote');
+        return $this->morphMany('App\Vote', 'votable');
     }
 
     public function suggestedDates()
@@ -46,7 +46,7 @@ class Version extends Model
 
     public function votedFor()
     {
-        return $this->hasOne('App\VersionVote')->authored();
+        return $this->hasOne('App\Vote', 'votable_id')->authored('App\Version');
     }
 
 

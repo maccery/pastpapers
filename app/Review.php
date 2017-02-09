@@ -29,7 +29,7 @@ class Review extends Model
 
     public function votes()
     {
-        return $this->hasMany('App\Vote');
+        return $this->morphMany('App\Vote', 'votable');
     }
 
     public function tags()
@@ -39,7 +39,7 @@ class Review extends Model
 
     public function votedFor()
     {
-        return $this->hasOne('App\Vote')->authored();
+        return $this->hasOne('App\Vote', 'votable_id')->authored('App\Review');
     }
 
 }

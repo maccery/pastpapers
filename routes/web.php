@@ -11,6 +11,7 @@
 |
 */
 use App\Software;
+use App\Vote;
 use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'web'], function() {
@@ -88,7 +89,12 @@ Route::group(['middleware' => 'web'], function() {
         'PostCreateSoftwareController@store')->middleware('auth')->name('post_create_software');
 
     Route::get('/vote/{review}/{vote}', function (App\Review $review, $vote, Request $request) {
-        $keys = ['review_id' => $review->id, 'user_id' => $request->user()->id];
+        $keys = [
+            'votable_id' => $review->id,
+            'votable_type' => 'App\Review',
+            'user_id' => $request->user()->id,
+            'votable_owner_id' => $review->user_id,
+        ];
 
         $current_vote = App\Vote::where($keys)->first();
         if (isset($current_vote)) {

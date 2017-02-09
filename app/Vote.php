@@ -9,8 +9,13 @@ use Illuminate\Support\Facades\Auth;
 class Vote extends Model
 {
     protected $fillable = [
-        'vote', 'review_id', 'user_id'
+        'vote', 'votable_id', 'votable_type', 'user_id', 'votable_owner_id',
     ];
+
+    public function votable()
+    {
+        return $this->morphTo();
+    }
 
     public function review()
     {
@@ -19,14 +24,25 @@ class Vote extends Model
 
     public function author()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
+    }
+
+    public function votable_owner()
+    {
+        return $this->belongsTo('App\User', 'votable_owner_id');
     }
     
-    public function scopeAuthored($query)
+    public function scopeAuthored($query, $votable_type)
     {
         $user = Auth::User();
         $user_id = (isset($user)) ? $user->id : NULL;
 
-        return $query->where('user_id', $user_id);
+        return $query->where('user_id', $user_id)->where('votable_type', $votable_type);
+    }
+
+    public function scopeWithWhereHas($query, $relation, $constraint)
+    {
+        return $query->whereHas($relation, $constraint)
+            ->with([$relation => $constraint]);
     }
 }

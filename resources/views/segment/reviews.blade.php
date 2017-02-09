@@ -16,7 +16,7 @@
                             <span class="badge">Expert reviewer</span>
                         @endif
                     </li>
-                    <li>{{ $review->author->votes->sum('vote') }} points</li>
+                    <li>{{ $review->author->points }} points</li>
                     <li>{{ $review->created_at->diffForHumans() }}</li>
                 </ul>
             </div>
