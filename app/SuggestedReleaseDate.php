@@ -12,11 +12,6 @@ class SuggestedReleaseDate extends Model
         'id', 'release_date', 'user_id', 'version_id'
     ];
 
-    public function votedFor()
-    {
-        return $this->hasOne('App\Vote')->authored('App\SuggestedReleaseDate');
-    }
-
     public function version()
     {
         return $this->belongsTo('App\Version');

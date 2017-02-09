@@ -32,9 +32,4 @@ class Review extends Model
         return $this->morphToMany('App\Tag', 'taggable');
     }
 
-    public function votedFor()
-    {
-        return $this->hasOne('App\Vote', 'votable_id')->authored('App\Review');
-    }
-
 }

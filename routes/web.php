@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'web'], function() {
     Route::get('/', function () {
+        $vote = Vote::all()->first();
+        echo $vote->test();
         return view('welcome');
     });
 

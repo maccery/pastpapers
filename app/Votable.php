@@ -8,4 +8,9 @@ trait Votable
     {
         return $this->morphMany('App\Vote', 'votable');
     }
+
+    public function votedFor()
+    {
+        return $this->hasOne('App\Vote', 'votable_id')->authored(get_class($this));
+    }
 }

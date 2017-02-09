@@ -47,12 +47,6 @@ class Version extends Model
         return $this->confirmed_release_date and $date_time->now() >= $this->release_date;
     }
 
-    public function votedFor()
-    {
-        return $this->hasOne('App\Vote', 'votable_id')->authored('App\Version');
-    }
-
-
     public function topTags() {
         return Tag::whereIn('id', function ($query) {
             $query->selectRaw('tag_id FROM  (
