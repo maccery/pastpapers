@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Software extends Model
+class Software extends Votable
 {
 
     protected $fillable = [

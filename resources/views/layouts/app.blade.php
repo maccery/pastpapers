@@ -60,6 +60,9 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
+                                    <a href="{{ route('view_user', ['user' => Auth::user()]) }}">Your profile</a>
+                                </li>
+                                <li>
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

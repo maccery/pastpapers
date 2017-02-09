@@ -6,10 +6,8 @@ use Carbon\Carbon;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Version extends Model
+class Version extends Votable
 {
-
-    use Votable;
 
     protected $fillable = [
         'id',

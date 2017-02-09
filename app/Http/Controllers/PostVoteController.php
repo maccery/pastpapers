@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserVoted;
 use App\Vote;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,8 @@ class PostVoteController extends Controller
                 ]);
             }
         }
+
+        event(new UserVoted($votable));
         return back();
     }
 }

@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SuggestedReleaseDate extends Model
+class SuggestedReleaseDate extends Votable
 {
-    use Votable;
 
     protected $fillable = [
         'id', 'release_date', 'user_id', 'version_id'
