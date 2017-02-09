@@ -16,6 +16,10 @@ class PostVoteController extends Controller
         {
             $votable = \App\Version::where('id', $votable_id)->first();
         }
+        elseif ($type == 'suggested_release_date')
+        {
+            $votable = \App\SuggestedReleaseDate::where('id', $votable_id)->first();
+        }
         if (isset($votable))
         {
             $keys = [
