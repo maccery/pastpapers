@@ -67,7 +67,7 @@ LIMIT 3) B', [$this->id]);
         return route('browse_by_version', ['software' => $this->software, 'version' => $this]);
     }
 
-    public function getNameAttribute() {
-        return $this->software->name . ' ' . $this->version;
+    public function getFullNameAttribute() {
+        return $this->version;
     }
 }

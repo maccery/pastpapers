@@ -48,4 +48,6 @@ abstract class Votable extends Model
     public function getRewardedForAttribute() {
         return 'Contribution';
     }
+
+    public function getDescriptionAttribute() {}
 }

@@ -72,4 +72,8 @@ class User extends Authenticatable
     public function getVotingPowerAttribute() {
         return 1;
     }
+
+    public function getRouteAttribute(){
+        return route('view_user', ['user' => $this]);
+    }
 }

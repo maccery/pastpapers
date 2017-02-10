@@ -11,8 +11,13 @@ class Alert extends Votable
         'user_id',
     ];
 
+    protected $appends = ['full_name'];
+
     public function getRewardedForAttribute() {
         return 'Voting';
     }
 
+    public function getFullNameAttribute() {
+        return $this->description;
+    }
 }

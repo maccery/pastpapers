@@ -29,4 +29,7 @@ class Software extends Votable
         return route('browse_name', ['software' => $this]);
     }
 
+    public function getFullNameAttribute() {
+        return $this->name;
+    }
 }

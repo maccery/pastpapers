@@ -28,7 +28,7 @@ class SuggestedReleaseDate extends Votable
         return route('browse_by_version', ['software' => 2, 'version' => $this->version]);
     }
 
-    public function getNameAttribute() {
+    public function getFullNameAttribute() {
         return $this->release_date;
     }
 }

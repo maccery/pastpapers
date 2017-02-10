@@ -9,10 +9,12 @@
 @foreach($votes as $vote)
     <tr>
         <td>{{ $vote->vote }}</td>
-        <td>{{ $vote->author->name }}</td>
+        <td><a href="{{ $vote->author->route }}">{{ $vote->author->name }}</a></td>
         <td>
-            @if(isset($vote->votable))
-                <a href="{{ $vote->votable->route }}">{{ $vote->votable->name }}</a>
+            @if(isset($vote->votable) and $vote->votable)
+                <a href="{{ $vote->votable->route }}">
+                    {{ $vote->votable->fullName }}
+                </a>
             @else
                 <i>This has been deleted</i>
             @endif
