@@ -24,8 +24,6 @@ class UserVoted
     public function __construct(Votable $votable)
     {
         $this->votable = $votable;
-        $votable->version = $votable->points;
-        $votable->save();
     }
 
 }

@@ -18,6 +18,10 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    protected $appends = [
+        'points',
+        'votingPower'
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -63,5 +67,9 @@ class User extends Authenticatable
 
     public function getPointsAttribute() {
         return $this->votes->sum('vote');
+    }
+
+    public function getVotingPowerAttribute() {
+        return 1;
     }
 }

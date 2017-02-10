@@ -13,7 +13,6 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\RemoveDownvoted::class,
         Commands\ConfirmReleaseDates::class,
     ];
 
@@ -25,8 +24,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('remove:downvoted')
-            ->hourly();
         $schedule->command('confirm:release_dates')
             ->hourly();
     }

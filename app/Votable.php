@@ -14,6 +14,11 @@ abstract class Votable extends Model
         return $this->morphMany('App\Vote', 'votable');
     }
 
+    public function author()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+
     public function votedFor()
     {
         return $this->hasOne('App\Vote', 'votable_id')->authored(get_class($this));

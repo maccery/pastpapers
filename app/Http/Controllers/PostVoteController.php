@@ -21,8 +21,13 @@ class PostVoteController extends Controller
         {
             $votable = \App\SuggestedReleaseDate::where('id', $votable_id)->first();
         }
+
+        $vote = $vote * $request->user()->votingPower;
+
         if (isset($votable))
         {
+            event(new UserVoted($votable));
+
             $keys = [
                 'votable_id' => $votable->id,
                 'votable_type' => get_class($votable),
@@ -41,7 +46,6 @@ class PostVoteController extends Controller
             }
         }
 
-        event(new UserVoted($votable));
         return back();
     }
 }

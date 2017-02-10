@@ -21,11 +21,6 @@ class Review extends Votable
         return $this->belongsTo('App\Version');
     }
 
-    public function author()
-    {
-        return $this->belongsTo('App\User', 'user_id');
-    }
-
     public function tags()
     {
         return $this->morphToMany('App\Tag', 'taggable');
