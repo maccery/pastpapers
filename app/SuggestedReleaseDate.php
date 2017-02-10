@@ -16,4 +16,11 @@ class SuggestedReleaseDate extends Votable
         return $this->belongsTo('App\Version');
     }
 
+    public function confirmedReal()
+    {
+        $version = $this->version;
+        $version->confirmed_release_date = True;
+        $version->release_date = $this->release_date;
+        $version->save();
+    }
 }

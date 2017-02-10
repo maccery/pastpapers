@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\UserVoted;
 use App\Jobs\PunishBadUsers;
+use App\Jobs\RewardUsers;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -41,6 +42,14 @@ class UserVotedListener
 
             // dispatch a job to punish these users
             dispatch(new PunishBadUsers(collect($users)));
+        }
+        elseif ($votable->points >= 1)
+        {
+            $votable->confirmedReal();
+
+            // dispatch a job to punish these users
+            dispatch(new RewardUsers(collect($users)));
+
         }
     }
 }

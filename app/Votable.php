@@ -24,6 +24,12 @@ abstract class Votable extends Model
         return $this->hasOne('App\Vote', 'votable_id')->authored(get_class($this));
     }
 
+    public function confirmedReal()
+    {
+        $this->confirmed_real = True;
+        $this->save();
+    }
+
     public function getPointsAttribute() {
         return $this->votes->sum('vote');
     }
