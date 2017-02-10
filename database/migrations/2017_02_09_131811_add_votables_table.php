@@ -14,10 +14,10 @@ class AddVotablesTable extends Migration
     public function up()
     {
         Schema::table('votes', function (Blueprint $table) {
+            $table->dropForeign('votes_review_id_foreign');
             $table->renameColumn('review_id', 'votable_id');
             $table->integer('votable_owner_id')->unsigned();
             $table->foreign('votable_owner_id')->references('id')->on('users');
-            $table->dropForeign('votes_review_id_foreign');
             $table->string('votable_type');
         });
     }
