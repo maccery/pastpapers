@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Alert;
+use App\Votable;
 use App\Vote;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -13,16 +14,18 @@ class RewardUsers implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
-    public $users;
+    public $users, $votable;
 
     /**
      * Create a new job instance.
      *
-     * @return void
+     * @param $users
+     * @param Votable $votable
      */
-    public function __construct($users)
+    public function __construct($users, Votable $votable)
     {
         $this->users = $users;
+        $this->votable = $votable;
     }
 
     /**
@@ -34,15 +37,15 @@ class RewardUsers implements ShouldQueue
     {
 
         // Make a system vote
-        $alert = Alert::create([
-            'description' => 'For correctly voting on (x)',
+        $alert = Alert::firstOrCreate([
+            'description' => 'For correctly voting on ' . $this->votable->id,
             'user_id' => 1,
         ]);
 
         // Then make votes for every user
         foreach ($this->users as $user)
         {
-            Vote::create([
+            Vote::firstOrCreate([
                 'votable_id' => $alert->id,
                 'vote' => 10,
                 'user_id' => 1,

@@ -26,4 +26,14 @@ class Review extends Votable
         return $this->morphToMany('App\Tag', 'taggable');
     }
 
+    public function getRouteAttribute(){
+        return route('review', ['review' => $this]);
+    }
+
+    public function getNameAttribute() {
+        return $this->title;
+    }
+
+    public function confirmedReal() {}
+
 }

@@ -33,4 +33,8 @@ abstract class Votable extends Model
     public function getPointsAttribute() {
         return $this->votes->sum('vote');
     }
+
+    public function getRewardedForAttribute() {
+        return 'Contribution';
+    }
 }

@@ -61,4 +61,13 @@ ORDER BY total DESC
 LIMIT 3) B', [$this->id]);
         })->get();
     }
+
+
+    public function getRouteAttribute(){
+        return route('browse_by_version', ['software' => $this->software, 'version' => $this]);
+    }
+
+    public function getNameAttribute() {
+        return $this->software->name . ' ' . $this->version;
+    }
 }

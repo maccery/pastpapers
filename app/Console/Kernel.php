@@ -13,7 +13,6 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\ConfirmReleaseDates::class,
     ];
 
     /**
@@ -24,8 +23,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('confirm:release_dates')
-            ->hourly();
     }
 
     /**

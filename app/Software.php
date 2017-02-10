@@ -25,4 +25,8 @@ class Software extends Votable
         return $this->hasManyThrough('App\Review', 'App\Version');
     }
 
+    public function getRouteAttribute(){
+        return route('browse_name', ['software' => $this]);
+    }
+
 }

@@ -11,4 +11,8 @@ class Alert extends Votable
         'user_id',
     ];
 
+    public function getRewardedForAttribute() {
+        return 'Voting';
+    }
+
 }

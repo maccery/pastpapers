@@ -26,8 +26,6 @@ class PostVoteController extends Controller
 
         if (isset($votable))
         {
-            event(new UserVoted($votable));
-
             $keys = [
                 'votable_id' => $votable->id,
                 'votable_type' => get_class($votable),
@@ -44,6 +42,8 @@ class PostVoteController extends Controller
                     'vote' => $vote,
                 ]);
             }
+            event(new UserVoted($votable));
+
         }
 
         return back();
