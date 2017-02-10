@@ -8,7 +8,7 @@
         @foreach ($softwares as $software)
         <tr>
             <td><a href="{{ route('browse_name', $software->id) }}">{{ $software->name }}</a></td>
-            <td>Yes</td>
+            <td>{{ ($software->confirmed_real) ? 'Yes' : 'No' }}</td>
         </tr>
         @endforeach
     </table>

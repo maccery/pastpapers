@@ -7,9 +7,12 @@ use App\Jobs\PunishBadUsers;
 use App\Jobs\RewardUsers;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Config;
 
 class UserVotedListener
 {
+    private $reject_at, $confirm_at;
+
     /**
      * Create the event listener.
      *
@@ -17,7 +20,8 @@ class UserVotedListener
      */
     public function __construct()
     {
-        //
+        $this->reject_at = Config::get('crowd_sourced.reject_at');
+        $this->confirm_at = Config::get('crowd_sourced.confirm_at');
     }
 
     /**
@@ -38,15 +42,16 @@ class UserVotedListener
             }
         }
 
-        if ($votable->points <= -1)
+        if ($votable->points <= $this->reject_at)
         {
             $votable->delete();
 
             // dispatch a job to punish  users who voted for this
             dispatch(new PunishBadUsers(collect($users), $votable));
         }
-        elseif ($votable->points >= 1)
+        elseif ($votable->points >= $this->confirm_at)
         {
+            echo 'hey';
             $votable->confirmedReal();
 
             // dispatch a job to reward these users

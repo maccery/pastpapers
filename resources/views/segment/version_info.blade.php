@@ -23,7 +23,7 @@
 
             @if(!$version->confirmed_real)
                 <p>Does this version exist?</p>
-                @include('review.version_vote', ['version' => $version])
+                @include('review.version_vote', ['voting_type' => 'version', 'version' => $version])
             @endif
 
             @if(!$version->confirmed_release_date)

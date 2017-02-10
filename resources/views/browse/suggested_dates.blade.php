@@ -7,6 +7,9 @@
         <td>
             <a href="">{{ $suggested_date->release_date }}</a>
         </td>
+        <td>
+            @include('segment.consensus_box', ['votable' => $suggested_date])
+        </td>
     </tr>
     @endforeach
 </table>

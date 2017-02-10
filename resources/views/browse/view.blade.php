@@ -10,6 +10,8 @@
                             more about the process of review, read <a href="">here</a>.
                     </div>
                 </div>
+                <p>Does this software exist?</p>
+                @include('review.version_vote', ['voting_type' => 'software', 'version' => $software])
             @endif
             <ul class="list list-inline list-unstyled">
                 @foreach ($versions as $version)
