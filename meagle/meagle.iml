@@ -2,7 +2,9 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/.." />
+    <content url="file://$MODULE_DIR$/..">
+      <excludeFolder url="file://$MODULE_DIR$/../vendor/browner12/helpers" />
+    </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="PHARS">
@@ -23,6 +25,17 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$APPLICATION_PLUGINS_DIR$/php/lib/php.jar!/stubs/standard" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHP" type="php">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../vendor/browner12/helpers" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../vendor/browner12/helpers" />
         </SOURCES>
       </library>
     </orderEntry>

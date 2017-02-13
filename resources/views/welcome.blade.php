@@ -2,7 +2,7 @@
 @section('content')
     <div class="content-row-black">
         <div class="container text-center">
-            <img class="img-circle logo-large" src="{{ asset('images/logo.png') }}">
+            <img class="img-circle logo-large" src="{{ secure_asset_production('images/logo.png') }}">
 
             @include('segment.search_box')
             <p>or <a href="{{ route('browse') }}">browse</a></p>

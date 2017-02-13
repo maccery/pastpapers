@@ -9,6 +9,6 @@
     @yield('content')
 </div>
 @include('layouts.footer')
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ secure_asset_production('js/app.js') }}"></script>
 </body>
 </html>
