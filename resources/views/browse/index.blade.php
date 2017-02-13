@@ -3,7 +3,10 @@
     <div class="content-row">
         <div class="container">
             <h1>Browse</h1>
-            <a href="{{ route('create_software') }}">Add something new</a>
+            <ul class="breadcrumb">
+                <li class="active">Browse</li>
+            </ul>
+            <p>Don't see the software you want? <a href="{{ route('create_software') }}">Add it</a></p>
             <table class="table">
                 <th>Name</th>
                 <th>Confirmed</th>
@@ -17,5 +20,3 @@
         </div>
     </div>
 @endsection
-
-

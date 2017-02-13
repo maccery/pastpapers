@@ -2,7 +2,11 @@
 @section('content')
     <div class="content-row">
         <div class="container">
-            <h3>Add a piece of software</h3>
+            <h1>Add a piece of software</h1>
+            <ul class="breadcrumb">
+                <li><a href="{{ route('browse') }}">Browse</a></li>
+                <li class="active">Create software</li>
+            </ul>
             <form method="POST" action="{{ route('post_create_software') }}">
                 <div class="form-group">
                     <input class="form-control" name="name" class="input-group input-lg" placeholder="Enter software name here">

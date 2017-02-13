@@ -31,26 +31,20 @@ Route::group(['middleware' => 'web'], function() {
     })->name('browse');
 
     Route::get('/browse/{software}', function (App\Software $software) {
-        $reviews = $software->reviews->sortByDesc(function ($reviews) {
-            return $reviews->votes->sum('vote');
-        });
-        $versions = $software->versions->where('confirmed_real', true);
+        $versions = $software->versions;
 
-        return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions]);
+        return view('browse/versions', ['software' => $software, 'versions' => $versions]);
     })->name('browse_name');
 
     Route::get('/browse/{software}/{version}', function (App\Software $software, App\Version $version) {
         $reviews = $version->reviews->sortByDesc(function ($reviews) {
             return $reviews->votes->sum('vote');
         });
-        
-        $versions = $software->versions->where('confirmed_real', true);
+
 
         return view('browse/view', [
             'software' => $software,
             'reviews' => $reviews,
-            'versions' => $versions,
-            'version_id' => $version->id,
             'current_version' => $version
         ]);
     })->name('browse_by_version');

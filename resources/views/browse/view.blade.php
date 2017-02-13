@@ -4,6 +4,11 @@
         <div class="container">
             <div class="col-sm-8">
                 <h1>{{ $software->name }}</h1>
+                <ul class="breadcrumb">
+                    <li><a href="{{ route('browse') }}">Browse</a></li>
+                    <li><a href="{{ route('browse_name', ['software' => $software]) }}">{{ $software->name }}</a></li>
+                    <li class="active">{{ $software->name }} {{ $current_version->version }}</li>
+                </ul>
                 @if(!$software->confirmed_real)
                     <div class="row">
                         <div class="container alert alert-danger">
@@ -15,21 +20,6 @@
                     <p>Does this software exist?</p>
                     @include('review.version_vote', ['voting_type' => 'software', 'version' => $software])
                 @endif
-                <ul class="list list-inline list-unstyled">
-                    @foreach ($versions as $version)
-                        <li>
-                            <a class="{{ (isset($version_id) and $version->id == $version_id) ? 'voted' : 'not-voted' }}"
-                               href="{{ route('browse_by_version', [$software->id, $version->id]) }}">Version {{ $version->version }}</a>
-                        </li>
-                    @endforeach
-                    <li>
-                        <a href="{{ route('unconfirmed_versions', ['software' => $software]) }}">Other</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('create_version', ['software' => $software]) }}"><span
-                                    class="glyphicon glyphicon-plus"></span></a>
-                    </li>
-                </ul>
                 @if(isset($current_version) and !$current_version->canLeaveReview())
                     @include('segment.version_info', ['version' => $current_version])
                     @include('segment.confirmation_warnings', ['version' => $current_version])
