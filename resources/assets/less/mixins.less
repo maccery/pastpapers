@@ -1,0 +1,66 @@
+@content-row-height: 400px;
+
+.content-row-image {
+  height: @content-row-height;
+  background-color: white;
+
+  div {
+    background: no-repeat center center scroll; background-size: cover;
+    height: @content-row-height;
+    opacity: 0.6;
+  }
+}
+
+.content-row-model {
+  height: 500px;
+
+  div {
+    background: no-repeat center center scroll; background-size: cover;
+    height: 500px;
+  }
+}
+
+.content-row(@color, @transparency) {
+  @rgba: rgba(red(@color),green(@color),blue(@color),@transparency);
+  @argb: argb(@rgba);
+  background-color: @rgba;
+  filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argb}, endColorstr=@{argb})";
+  -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argb}, endColorstr=@{argb})";
+
+  margin: 0;
+  .container {
+    max-width: 1100px;
+  }
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 100%;
+
+  p {
+    font-size: @font-size-base * 1.2;
+    font-weight: lighter;
+  }
+}
+
+.font-color (@color) when (lightness(@color) >= 50%) {
+  color: darken(@color, 78%);
+}
+
+.font-color (@color) when (lightness(@color) < 50%) {
+  color: lighten(@color, 78%);
+}
+
+.link-color (@color) when (lightness(@color) >= 50%) {
+  color: darken(@color, 30%);
+}
+
+.link-color (@color) when (lightness(@color) < 50%) {
+  color: lighten(@color, 30%);
+}
+
+.link-hover-color (@color) when (lightness(@color) >= 50%) {
+  color: darken(@color, 20%);
+}
+
+.link-hover-color (@color) when (lightness(@color) < 50%) {
+  color: lighten(@color, 20%);
+}

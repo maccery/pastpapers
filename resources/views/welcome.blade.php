@@ -1,20 +1,37 @@
-@extends('layouts.app')
+@extends('layouts.no_header')
 @section('content')
-    <div class="container">
-        <h1>welcome to <b>meagle.org</b></h1>
-        <h3><a href="{{ route('browse') }}">browse >></a></h3>
+    <div class="content-row-black">
+        <div class="container text-center">
+            <img class="img-circle logo-large" src="{{ asset('images/logo.png') }}">
 
-        @include('segment.search_box')
+            @include('segment.search_box')
+        </div>
+    </div>
+    <div class="content-row">
+        <div class="container">
+            <h2>Meagle is home to completely impartial software reviews</h2>
+            <p>
+                We’re a self-moderating community of reviews from the people who know the most.
+            </p>
+        </div>
+    </div>
 
-        <h2>How it works</h2>
-        <p><b>Stage 1</b> A piece of software is published</p>
-        <p><b>Stage 2</b> This is crowd-sourced into our system</p>
-        <p><b>Stage 3</b> The community can review it</p>
-        <p><b>Stage 4</b> Reviews are curated by other users' votes</p>
+    <div class="content-row-grey">
+        <div class="container">
+            <h2>We mean impartial</h2>
+            <p>We’re free and open-source. You can’t buy an advert on our website.
+                Our reviews are totally free from sponsorship and advertising.
+            </p>
+        </div>
+    </div>
 
-        <h2>Why it works</h2>
-        <p><b>Top contributors</b> (those with lots of points) have more power when voting. Every post they make also starts
-        with a higher amount of points.</p>
-        <p>Those with high-quality email addresses such as {!! '@techcrunch.com, @wired.com' !!} are considered top contributors.</p>
+
+    <div class="content-row">
+        <div class="container">
+            <h2>Meagle is home to completely impartial software reviews</h2>
+            <p>
+                We’re a self-moderating community of reviews from the people who know the most.
+            </p>
+        </div>
     </div>
 @endsection

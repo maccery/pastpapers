@@ -1,0 +1,140 @@
+/* Global classes */
+.padding {
+  padding: 20px;
+}
+
+.small-logo {
+  height: 200px;
+}
+
+#splash-header-wrapper {
+  border-bottom: 7px solid rgba(0,0,0,0.2);
+  background: no-repeat center 30% scroll;
+  background-size: cover;
+}
+
+.bottom-sticky {
+  position: absolute;
+  bottom: 0;
+}
+
+/* Custom variables */
+@content-transparency: 1;
+
+/* Content rows */
+.content-row {
+  .content-row(white, @content-transparency);
+  .font-color(white);
+  a { .link-color(white); }
+  a:hover { .link-hover-color(white); }
+}
+
+.content-row-transparent {
+  .content-row(white, 0);
+  color: white;
+  a { color: white; }
+  a:hover { color: white; }
+}
+
+
+.content-row-brand {
+  .content-row(@brand-primary, @content-transparency);
+  color: white;
+  a { color: white; }
+  a:hover { color: white; }
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.content-row-grey {
+  .content-row(#f1f1f1, @content-transparency);
+  .font-color(#f1f1f1);
+  a { .link-color(#f1f1f1); }
+  a:hover { .link-hover-color(#f1f1f1); }
+}
+
+
+.content-row-black {
+  .content-row(#262626, @content-transparency);
+  .font-color(#262626);
+  a { .link-color(#262626); }
+  a:hover { .link-hover-color(#262626); }
+}
+
+
+@footer-height: 60px;
+
+footer {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 30px;
+  height: @footer-height;
+  font-size: @font-size-base*0.8;
+}
+
+@media (max-width: @screen-sm-max) {
+  .profile {
+    margin-top: 200px;
+  }
+
+  h4 {
+    font-size: (@font-size-h4*0.8);
+  }
+
+  h3 {
+    font-size: (@font-size-h3*0.8);
+  }
+
+  h2 {
+    font-size: (@font-size-h2*0.8);
+  }
+
+  h1 {
+    font-size: (@font-size-h1*0.8);
+  }
+
+  .home {
+    h1 {
+      font-size: (@font-size-h1);
+    }
+  }
+
+  footer {
+    text-align: center;
+
+    ul, p, li {
+      text-align: center;
+    }
+
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  header, footer {
+    text-align: center;
+
+    ul, p {
+      text-align: center;
+      font-size: @font-size-base;
+
+      li {
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  .content-row-image {
+    height: @content-row-height/2;
+
+    div {
+      height: @content-row-height/2;
+    }
+  }
+}

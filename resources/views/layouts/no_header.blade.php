@@ -5,7 +5,6 @@
 </head>
 <body>
 <div id="app">
-    @include('layouts.navigation')
     @yield('content')
 </div>
 @include('layouts.footer')
