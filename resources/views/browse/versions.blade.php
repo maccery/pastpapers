@@ -7,6 +7,14 @@
                 <li><a href="{{ route('browse') }}">Browse</a></li>
                 <li class="active">{{ $software->name }}</li>
             </ul>
+            @if(!$software->confirmed_real)
+                <div class="alert alert-danger">
+                    <p>This software has not been confirmed as real yet. Software versions are crowd-sourced on Meagle. To find out
+                        more about the process of review, read <a href="">here</a>.
+                </div>
+                <p>Does this version exist?</p>
+                @include('review.version_vote', ['voting_type' => 'software', 'version' => $software])
+            @else
             <p>Don't see the version you want? <a href="{{ route('create_version', ['software' => $software]) }}">Add it</a></p>
             <table class="table">
                 <th>Name</th>
@@ -20,6 +28,7 @@
                     </tr>
                 @endforeach
             </table>
+            @endif
         </div>
     </div>
 @endsection

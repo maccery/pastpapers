@@ -5,7 +5,7 @@
             @include('review.release_date_vote', ['suggested_date' => $suggested_date])
         </td>
         <td>
-            <a href="">{{ $suggested_date->release_date }}</a>
+            {{ $suggested_date->release_date }}
         </td>
         <td>
             @include('segment.consensus_box', ['votable' => $suggested_date])
