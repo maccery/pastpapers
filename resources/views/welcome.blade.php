@@ -5,6 +5,7 @@
             <img class="img-circle logo-large" src="{{ asset('images/logo.png') }}">
 
             @include('segment.search_box')
+            <p>or <a href="{{ route('browse') }}">browse</a></p>
         </div>
     </div>
     <div class="content-row">

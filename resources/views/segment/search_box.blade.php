@@ -1,6 +1,9 @@
-<form method="POST" action="{{ route('search') }}">
-    <div class="form-group">
-        <input class="form-control" name="query" class="input-group input-lg" placeholder="What do you want to find?">
+<form class="navbar-form" method="POST" action="{{ route('search') }}">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="e.g iOS" name="query">
+        <div class="input-group-btn">
+            <button class=" btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
         </div>
+    </div>
     {{ csrf_field() }}
 </form>

@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => 'web'], function() {
     Route::get('/', function () {
         return view('welcome');
-    });
+    })->name('home');
 
     Route::post('/search', 'PostSearchController@search')->name('search');
 

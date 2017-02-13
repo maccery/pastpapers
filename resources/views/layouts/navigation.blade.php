@@ -15,8 +15,12 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li><a href="#">Software</a></li>
+                <li><a href="{{ route('home') }}">Home</a></li>
+                <li><a href="{{ route('browse') }}">Browse software</a></li>
             </ul>
+            <div class="nav navbar-nav hidden-xs" style="padding-left:45px;">
+                @include('segment.search_box')
+            </div>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
