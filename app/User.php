@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Config;
 
 class User extends Authenticatable
 {
@@ -15,12 +16,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'voting_power',
     ];
 
     protected $appends = [
-        'points',
-        'votingPower'
+        'points'
     ];
 
     /**
@@ -67,10 +67,6 @@ class User extends Authenticatable
 
     public function getPointsAttribute() {
         return $this->votes->sum('vote');
-    }
-
-    public function getVotingPowerAttribute() {
-        return 1;
     }
 
     public function getRouteAttribute(){

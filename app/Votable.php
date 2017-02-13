@@ -49,5 +49,5 @@ abstract class Votable extends Model
         return 'Contribution';
     }
 
-    public function getDescriptionAttribute() {}
+    public function getFullNameAttribute() {}
 }

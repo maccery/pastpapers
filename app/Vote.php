@@ -2,12 +2,25 @@
 
 namespace App;
 
+use App\Observers\VoteObserver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 
 class Vote extends Model
 {
+    use Notifiable;
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $events = [
+        'deleted' => VoteObserver::class,
+    ];
+
     protected $fillable = [
         'vote', 'votable_id', 'votable_type', 'user_id', 'votable_owner_id',
     ];

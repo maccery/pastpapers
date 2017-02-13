@@ -30,7 +30,7 @@ class Review extends Votable
         return route('review', ['review' => $this]);
     }
 
-    public function getNameAttribute() {
+    public function getFullNameAttribute() {
         return $this->title;
     }
 

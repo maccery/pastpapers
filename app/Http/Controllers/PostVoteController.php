@@ -26,7 +26,7 @@ class PostVoteController extends Controller
             $votable = \App\SuggestedReleaseDate::where('id', $votable_id)->first();
         }
 
-        $vote = $vote * $request->user()->votingPower;
+        $vote = $vote * $request->user()->voting_power;
 
         if (isset($votable))
         {
