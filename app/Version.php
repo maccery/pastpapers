@@ -62,6 +62,18 @@ LIMIT 3) B', [$this->id]);
         })->get();
     }
 
+    public function getVerdictAttribute() {
+        return 'No concensus yet';
+    }
+
+    public function getPositiveAttribute() {
+        return 'No concensus yet';
+    }
+
+    public function getNegativeAttribute() {
+        return 'No concensus yet';
+    }
+
 
     public function getRouteAttribute(){
         return route('browse_by_version', ['software' => $this->software, 'version' => $this]);

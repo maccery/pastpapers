@@ -3,7 +3,7 @@
     <div class="content-row">
         <div class="container">
             <div class="col-sm-9">
-                <h1>{{ $software->name }} {{ $current_version->version }}</h1>
+                <h1>{{ $software->name }} {{ $current_version->version }} reviews</h1>
                 <ul class="breadcrumb">
                     <li><a href="{{ route('browse') }}">Browse</a></li>
                     <li><a href="{{ route('browse_name', ['software' => $software]) }}">{{ $software->name }}</a></li>
@@ -11,13 +11,13 @@
                 </ul>
                 @include('segment.confirmation_warnings', ['version' => $current_version])
                 @if(isset($current_version) and $current_version->canLeaveReview())
-                    <h4><b>Verdict</b>: Mainly negative</h4>
+                    <h4><b>Verdict</b>: {{ $current_version->verdict }}</h4>
                     <div class="progress">
-                        <div class="progress-bar progress-bar-success" style="width: 30%">
-                            <span class="sr-only">35% Complete (success)</span>
+                        <div class="progress-bar progress-bar-success" style="width: {{ $current_version->positive }}%">
+                            <span class="sr-only">{{ $current_version->positive }}% positive</span>
                         </div>
-                        <div class="progress-bar progress-bar-danger" style="width: 70%">
-                            <span class="sr-only">10% Complete (danger)</span>
+                        <div class="progress-bar progress-bar-danger" style="width: {{ $current_version->negative }}%">
+                            <span class="sr-only">{{ $current_version->negative }}% negative</span>
                         </div>
                     </div>
                     @include('segment.reviews', ['reviews' => $reviews->slice(0, 4)])

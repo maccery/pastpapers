@@ -6,15 +6,14 @@
 @brand-success: #A1D490;
 
 /* Variables */
-@font-family-base: 'Avenir', sans-serif;
+@font-family-base: 'Avenir', 'Helvetica', sans-serif;
 @font-family-headings: 'nimbus-sans', sans-serif;
 @font-size-base: 15px;
 
-@border-radius-base: 0;
+@border-radius-base: 3px;
 @icon-font-path: '/fonts/';
 
 @input-border: #B7B7B7;
-@navbar-default-bg: @background-color;
 @navbar-default-border: none;
 
 
@@ -27,11 +26,17 @@ h1, h2, h3, h4 {
 @not-voted: #B7B7B7;
 
 .voted {
-  color: darken(@not-voted, 100%);
+  color: darken(@not-voted, 100%) !important;
+  a, a:hover {
+    color: darken(@not-voted, 100%) !important;
+  }
 }
 
 .not-voted {
-  color: @not-voted;
+  color: @not-voted !important;
+  a, a:hover {
+    color: @not-voted !important;
+  }
 }
 
 .logo {

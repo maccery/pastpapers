@@ -8,7 +8,7 @@
 }
 
 #splash-header-wrapper {
-  border-bottom: 7px solid rgba(0,0,0,0.2);
+  border-bottom: 7px solid rgba(0, 0, 0, 0.2);
   background: no-repeat center 30% scroll;
   background-size: cover;
 }
@@ -25,23 +25,34 @@
 .content-row {
   .content-row(white, @content-transparency);
   .font-color(white);
-  a { .link-color(white); }
-  a:hover { .link-hover-color(white); }
+  a {
+    .link-color(white);
+  }
+  a:hover {
+    .link-hover-color(white);
+  }
 }
 
 .content-row-transparent {
   .content-row(white, 0);
   color: white;
-  a { color: white; }
-  a:hover { color: white; }
+  a {
+    color: white;
+  }
+  a:hover {
+    color: white;
+  }
 }
-
 
 .content-row-brand {
   .content-row(@brand-primary, @content-transparency);
   color: white;
-  a { color: white; }
-  a:hover { color: white; }
+  a {
+    color: white;
+  }
+  a:hover {
+    color: white;
+  }
 }
 
 .no-margin {
@@ -55,18 +66,24 @@
 .content-row-grey {
   .content-row(#f1f1f1, @content-transparency);
   .font-color(#f1f1f1);
-  a { .link-color(#f1f1f1); }
-  a:hover { .link-hover-color(#f1f1f1); }
+  a {
+    .link-color(#f1f1f1);
+  }
+  a:hover {
+    .link-hover-color(#f1f1f1);
+  }
 }
-
 
 .content-row-black {
   .content-row(#262626, @content-transparency);
   .font-color(#262626);
-  a { .link-color(#262626); }
-  a:hover { .link-hover-color(#262626); }
+  a {
+    .link-color(#262626);
+  }
+  a:hover {
+    .link-hover-color(#262626);
+  }
 }
-
 
 @footer-height: 60px;
 
@@ -80,9 +97,11 @@ body, html {
   height: 100%;
 
 }
+
 * {
   margin: 0;
 }
+
 #app:after {
   content: "";
   display: block;

@@ -19,6 +19,10 @@ Route::group(['middleware' => 'web'], function() {
         return view('welcome');
     })->name('home');
 
+    Route::get('/process', function () {
+        return view('review.process');
+    })->name('process');
+
     Route::post('/search', 'PostSearchController@search')->name('search');
 
     Route::get('/review/{review}', function (App\Review $review) {
