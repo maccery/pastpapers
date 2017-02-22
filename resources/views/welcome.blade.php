@@ -3,7 +3,7 @@
     <div class="content-row-black">
         <div class="container text-center">
             <img class="img-circle logo-large" src="{{ secure_asset_production('images/logo.png') }}">
-
+            <p>Find software reviews about...</p>
             @include('segment.search_box')
             <p>or <a href="{{ route('browse') }}">browse</a></p>
         </div>

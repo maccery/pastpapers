@@ -62,7 +62,10 @@ class User extends Authenticatable
             'me.com',
         );
 
-        return in_array($this->emailDomain(), $top_email_domains);
+        if (in_array($this->emailDomain(), $top_email_domains))
+        {
+            return $this->emailDomain();
+        }
     }
 
     public function getPointsAttribute() {

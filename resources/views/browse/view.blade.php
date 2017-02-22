@@ -2,7 +2,7 @@
 @section('content')
     <div class="content-row">
         <div class="container">
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <h1>{{ $software->name }} {{ $current_version->version }}</h1>
                 <ul class="breadcrumb">
                     <li><a href="{{ route('browse') }}">Browse</a></li>
@@ -11,13 +11,21 @@
                 </ul>
                 @include('segment.confirmation_warnings', ['version' => $current_version])
                 @if(isset($current_version) and $current_version->canLeaveReview())
+                    <h4><b>Verdict</b>: Mainly negative</h4>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: 30%">
+                            <span class="sr-only">35% Complete (success)</span>
+                        </div>
+                        <div class="progress-bar progress-bar-danger" style="width: 70%">
+                            <span class="sr-only">10% Complete (danger)</span>
+                        </div>
+                    </div>
                     @include('segment.reviews', ['reviews' => $reviews->slice(0, 4)])
                     @include('segment.other_reviews', ['reviews' => $reviews->slice(4)])
-                    @include('review.create', ['current_version' => $current_version])
                 @endif
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 @if(!$software->confirmed_real)
                     <p>Does this exist?</p>
                     @include('review.version_vote', ['voting_type' => 'software', 'version' => $software])
@@ -26,10 +34,15 @@
                     @include('segment.version_info', ['version' => $current_version])
                 @else
                     @include('segment.tags', ['tags' => $current_version->topTags()])
-                    <h3>Have your say</h3>
-                    <p><small>Used this software? People want to know</small></p>
                 @endif
             </div>
         </div>
     </div>
+    @if(isset($current_version) and $current_version->canLeaveReview())
+        <div class="content-row-grey">
+            <div class="container">
+                @include('review.create', ['current_version' => $current_version])
+            </div>
+        </div>
+    @endif
 @endsection
