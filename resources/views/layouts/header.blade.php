@@ -18,4 +18,4 @@
 <meta property="og:title" content="@yield('title','')Meagle: Impartial Software Reviews">
 <meta property="og:description" content="@yield('description', "Meagle is home to completely impartial software reviews, surfacing expert opinion from people who matter the most.")">
 <title>@yield('title','')Meagle: Impartial Software Reviews</title>
-<link rel="stylesheet" tfype="text/css" href="{{ secure_asset_production('css/app.css?v=7') }}">
+<link rel="stylesheet" tfype="text/css" href="{{ secure_asset_production('css/app.css?v=8') }}">

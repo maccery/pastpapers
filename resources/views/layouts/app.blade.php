@@ -6,6 +6,7 @@
 <body>
 <div id="app">
     @include('layouts.navigation')
+    @include('errors.generic')
     @yield('content')
 </div>
 @include('layouts.footer')

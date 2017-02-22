@@ -58,7 +58,7 @@ AND T.taggable_type = \'App\\\Review\'
 AND V.id = ?
 GROUP BY tag_id
 ORDER BY total DESC
-LIMIT 3) B', [$this->id]);
+LIMIT 10) B', [$this->id]);
         })->get();
     }
 

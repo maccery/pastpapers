@@ -25,7 +25,7 @@ class PostReview extends FormRequest
     {
         return [
             'description' => 'required|min:80',
-            'title' => 'required|min:30',
+            'title' => 'required|min:30|max:255',
             'negative' => 'sometimes',
             'positive' => 'sometimes',
         ];

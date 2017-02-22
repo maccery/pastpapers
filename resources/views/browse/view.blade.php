@@ -27,7 +27,7 @@
                 @endif
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-sm-3 hidden-xs">
                 @if(!$software->confirmed_real)
                     <p>Does this exist?</p>
                     @include('review.version_vote', ['voting_type' => 'software', 'version' => $software])

@@ -30,7 +30,7 @@ Route::group(['middleware' => 'web'], function() {
     })->name('review');
 
     Route::get('/browse', function () {
-        $softwares = Software::all();
+        $softwares = Software::orderBy('name', 'asc')->get();
         return view('browse/index', ['softwares' => $softwares]);
     })->name('browse');
 

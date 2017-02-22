@@ -1,3 +1,5 @@
 @foreach ($tags as $tag)
-    <span class="review-tag label label-{{ $tag->badgeColor() }}">{{ $tag->name }}</span>
+    <div class="review-tag">
+        <span class="label label-{{ $tag->badgeColor() }}">{{ $tag->name }}</span>
+    </div>
 @endforeach

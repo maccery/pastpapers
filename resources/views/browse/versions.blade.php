@@ -26,7 +26,7 @@
                     <tr>
                         <td><a href="{{ route('browse_by_version', ['software' => $version->software->id, 'version' => $version->id]) }}">{{ $version->software->name }} {{ $version->version }}</a></td>
                         <td>{{ $version->release_date or '' }}</td>
-                        <td>{{ ($version->confirmed_real) ? '' : 'Pending review' }}</td>
+                        <td>{{ ($version->confirmed_real) ? 'Yes' : 'No' }}</td>
                     </tr>
                 @endforeach
             </table>

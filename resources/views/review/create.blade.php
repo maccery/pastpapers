@@ -5,19 +5,19 @@
             <div class="form-group">
                 <label for="title">Summarise your review</label>
                 <input type="hidden" name="version_id" value="{{ $current_version->id }}">
-                <input class="form-control" id="title" name="title" class="input-group input-lg" placeholder="Review title">
+                <input class="form-control" id="title" name="title" class="input-group input-lg" placeholder="Review title" value="{{ old('title') }}">
             </div>
             <div class="form-group">
                 <label for="description">Review body</label>
-                <textarea class="form-control" rows="8" id="description" name="description" class="input-group input-lg" placeholder="Your review here"></textarea>
+                <textarea class="form-control" rows="8" id="description" name="description" class="input-group input-lg" placeholder="Your review here">{{ old('description') }}</textarea>
             </div>
             <div class="form-group">
                 <label for="title">What didn't you like?</label> Separate with commas
-                <input class="form-control" name="negative" class="input-group input-lg" placeholder="Negative tags">
+                <input class="form-control" name="negative" class="input-group input-lg" placeholder="Negative tags" value="{{ old('negative') }}">
             </div>
             <div class="form-group">
                 <label for="title">What did you like?</label> Separate with commas
-                <input class="form-control" name="positive" class="input-group input-lg" placeholder="Positive tags">
+                <input class="form-control" name="positive" class="input-group input-lg" placeholder="Positive tags" {{ old('positive') }}">
             </div>
             @if (Auth::guest())
                 <p><small><a href="{{ url('/register') }}">Register</a> to submit</small></p>
@@ -27,7 +27,9 @@
             @endif
             {{ csrf_field() }}
         </form>
-        @include('errors.generic')
+        <div class="padding">
+            @include('errors.generic')
+        </div>
     @else
         <h3>Have you used this software?</h3>
         <p>Meagle reviews are provided by people like yourself: <a href="{{ route('register') }}">register</a> here to share your knowledge with the world.</p>

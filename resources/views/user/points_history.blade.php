@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-responsive">
     <tr>
         <th>Points rewarded</th>
         <th>Rewarded by</th>

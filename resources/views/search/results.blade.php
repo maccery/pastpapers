@@ -5,7 +5,7 @@
     <div class="container">
         <h1>Search results</h1>
         @if(count($versions) == 0)
-            <p>No results found</p>
+            <p>No results found. Why not <a href="{{ route('create_software') }}">create</a> the software?</p>
         @endif
         <table class="table">
         @foreach($versions as $version)
