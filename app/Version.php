@@ -63,15 +63,24 @@ LIMIT 10) B', [$this->id]);
     }
 
     public function getVerdictAttribute() {
-        return 'No concensus yet';
+        $positive = $this->positive;
+        if ($positive > 60) {
+            return 'Mainly positive';
+        }
+        elseif ($positive < 40) {
+            return 'Mainly negative';
+        }
+        else {
+            return 'No concensus';
+        }
     }
 
     public function getPositiveAttribute() {
-        return 'No concensus yet';
+        return $this->tagCount('positive') / $this->tagCount('negative') + $this->tagCount('positive');
     }
 
     public function getNegativeAttribute() {
-        return 'No concensus yet';
+        return $this->tagCount('negative') / $this->tagCount('positive') + $this->tagCount('negative');
     }
 
 
@@ -81,5 +90,22 @@ LIMIT 10) B', [$this->id]);
 
     public function getFullNameAttribute() {
         return $this->version;
+    }
+
+    private function tagCount($tag_type) {
+        return Tag::whereIn('id', function ($query) use ($tag_type) {
+            $query->selectRaw('tag_id FROM  (
+            SELECT
+ COUNT(tag_id) total, tag_id
+FROM tags TT, taggables T, reviews R, versions V 
+WHERE V.id = R.version_id 
+AND T.tag_id = TT.id
+AND T.taggable_id = R.id 
+AND T.taggable_type = \'App\\\Review\' 
+AND V.id = ?
+AND TT.type = ?
+GROUP BY tag_id
+ORDER BY total DESC) B', [$this->id, $tag_type]);
+        })->count();
     }
 }

@@ -14,9 +14,12 @@ class VoteObserver
      */
     public function created(Vote $vote)
     {
-        $user = $vote->votable_owner();
+        $user = $vote->votable_owner()->first();
         $user->voting_power = 500;
-        $user->save();
+        if ($user)
+        {
+            $user->save();
+        }
     }
 
     /**
@@ -27,8 +30,11 @@ class VoteObserver
      */
     public function handle(Vote $vote)
     {
-        $user = $vote->votable_owner();
+        $user = $vote->votable_owner()->first();
         $user->voting_power = 500;
-        $user->save();
+        if ($user)
+        {
+            $user->save();
+        }
     }
 }
