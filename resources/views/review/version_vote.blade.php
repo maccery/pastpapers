@@ -8,6 +8,6 @@
            href="{{ route('vote_review', ['type' => $voting_type, 'votable_id' => $version->id, 'vote' => -1]) }}">No</a></li>
 </ul>
 @else
-<p><small><a href="{{ url('/register') }}">Register</a> to submit</small></p>
+<p><small><a href="{{ url('/register') }}">Register</a> to vote</small></p>
 @endif
 @include('segment.consensus_box', ['votable' => $version])

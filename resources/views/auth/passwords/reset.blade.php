@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Reset Password | ')
 @section('content')
     <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
         {{ csrf_field() }}

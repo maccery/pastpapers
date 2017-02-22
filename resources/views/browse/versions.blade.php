@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('title', $software->name . ' | ')
+@section('description', 'Get impartial reviews and advice about ' . $software->name . '. Should you upgrade? Read what the experts are saying.')
 @section('content')
     <div class="content-row">
         <div class="container">
