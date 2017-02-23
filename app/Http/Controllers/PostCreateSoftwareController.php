@@ -12,6 +12,6 @@ class PostCreateSoftwareController extends Controller
             'name' => $request->input('name'),
             'user_id' => $request->user()->id,
         ]);
-        return back();
+        return redirect()->route('browse');
     }
 }

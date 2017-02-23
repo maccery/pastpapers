@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostCreateVersion;
+use App\Software;
 
 class PostCreateVersionController extends Controller
 {
@@ -13,6 +14,8 @@ class PostCreateVersionController extends Controller
             'version' => $request->input('version_name'),
             'user_id' => $request->user()->id,
         ]);
-        return back();
+
+        $software = Software::where(['id' => $request->input('software_id')])->first();
+        return redirect()->route('browse_name', ['software' => $software]);
     }
 }
