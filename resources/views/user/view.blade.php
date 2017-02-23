@@ -3,7 +3,7 @@
     <div class="content-row">
         <div class="container">
             <h1>{{ $user->name }}
-                <small>{{ $user->points }} points</small>
+                <small>{{ $user->points }} points, +{{ $user->voting_power }} voting power</small>
             </h1>
         </div>
     </div>

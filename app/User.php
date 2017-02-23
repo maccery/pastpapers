@@ -16,12 +16,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'voting_power',
+        'name', 'email', 'password', 'voting_power', 'points'
     ];
 
-    protected $appends = [
-        'points'
-    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -66,11 +63,9 @@ class User extends Authenticatable
         {
             return $this->emailDomain();
         }
+
     }
 
-    public function getPointsAttribute() {
-        return $this->votes->sum('vote');
-    }
 
     public function getRouteAttribute(){
         return route('view_user', ['user' => $this]);

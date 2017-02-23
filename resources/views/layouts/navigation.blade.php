@@ -56,8 +56,8 @@
         </div>
     </div>
 </nav>
-<div class="content-row" style="padding:0;margin: 0;">
+<div class="content-row">
     <div class="container">
-        <a href=""><img class="logo-large" src="{{ secure_asset_production('images/horizontal-logo.png') }}"></a>
+        <a href="{{ route('home') }}"><img class="logo-large" src="{{ secure_asset_production('images/horizontal-logo.png') }}"></a>
     </div>
 </div>

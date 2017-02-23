@@ -76,11 +76,13 @@ LIMIT 10) B', [$this->id]);
     }
 
     public function getPositiveAttribute() {
-        return $this->tagCount('positive') / $this->tagCount('negative') + $this->tagCount('positive');
+        $total = max($this->tagCount('negative') + $this->tagCount('positive'), 1);
+        return $this->tagCount('positive') / $total;
     }
 
     public function getNegativeAttribute() {
-        return $this->tagCount('negative') / $this->tagCount('positive') + $this->tagCount('negative');
+        $total = max($this->tagCount('negative') + $this->tagCount('positive'), 1);
+        return $this->tagCount('negative') / $total;
     }
 
 

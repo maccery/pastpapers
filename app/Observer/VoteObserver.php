@@ -3,11 +3,13 @@
 namespace App\Observers;
 
 use App\Vote;
+use Illuminate\Support\Facades\Config;
 
 class VoteObserver
 {
     /**
-     * Listen to the Votable created event.
+     * If someone creates a vote, give the owner of the thing being voted on more
+     * voting power if applicable
      *
      * @param  Vote  $votable
      * @return void
@@ -15,26 +17,37 @@ class VoteObserver
     public function created(Vote $vote)
     {
         $user = $vote->votable_owner()->first();
-        $user->voting_power = 500;
-        if ($user)
-        {
-            $user->save();
-        }
+        $reward_points = $vote->vote;
+        $this->updateVotingPower($user, $reward_points);
     }
 
     /**
-     * Listen to the Votable deleted event.
+     * If a vote is deleted, get the owner of the thing being voted on and update
+     * their voting power if applicable
      *
      * @param  Vote  $votable
      * @return void
      */
-    public function handle(Vote $vote)
+    public function deleted(Vote $vote)
     {
         $user = $vote->votable_owner()->first();
-        $user->voting_power = 500;
-        if ($user)
+        $reward_points = $vote->vote;
+        $this->updateVotingPower($user, $reward_points);
+    }
+
+    private function updateVotingPower($user, $reward_points)
+    {
+        $voting_power_buckets = Config::get('crowd_sourced.voting_power');
+        $points = $user->points + $reward_points;
+        $max_points = 0;
+        foreach ($voting_power_buckets as $key => $value)
         {
-            $user->save();
+            if ($points > $key) {
+                $max_points = $value;
+            }
         }
+        $user->voting_power = $max_points;
+        $user->points = $user->votes->sum('vote');
+        $user->save();
     }
 }

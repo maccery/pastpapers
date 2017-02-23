@@ -58,22 +58,4 @@ class UserVotedListener
         }
     }
 
-    private function updateVotingPower($user)
-    {
-        $voting_power_buckets = Config::get('crowd_sourced.voting_power');
-        $points = $this->points;
-        $max_points = 1;
-        foreach ($voting_power_buckets as $key => $value)
-        {
-            if ($points < $key) {
-                return $max_points;
-            }
-            else
-            {
-                $max_points = $value;
-            }
-        }
-        $user->voting_power = $max_points;
-        $user->save();
-    }
 }

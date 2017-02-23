@@ -7,3 +7,8 @@
         </ul>
     </div>
 @endif
+@if (Auth::user() and Auth::user()->voting_power == 0):
+    <div class="alert alert-danger">
+        You have a voting power of <b>0</b>. This means you cannot vote on things on the site.
+    </div>
+@endif
