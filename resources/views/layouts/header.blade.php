@@ -19,3 +19,13 @@
 <meta property="og:description" content="@yield('description', "Meagle is home to completely impartial software reviews, surfacing expert opinion from people who matter the most.")">
 <title>@yield('title','')Meagle: Impartial Software Reviews</title>
 <link rel="stylesheet" tfype="text/css" href="{{ secure_asset_production('css/app.css?v=8') }}">
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', '{{ env('GOOGLE_ANALYTICS_ID', '') }}', 'auto');
+    ga('send', 'pageview');
+
+</script>
