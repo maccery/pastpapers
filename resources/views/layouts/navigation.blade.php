@@ -16,6 +16,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li><a href="{{ route('home') }}">Home</a></li>
+                <li><a href="{{ route('process') }}">How it works</a></li>
                 <li><a href="{{ route('browse') }}">Browse software</a></li>
             </ul>
             <div class="nav navbar-nav hidden-xs" style="padding-left:45px;">

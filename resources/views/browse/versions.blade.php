@@ -12,7 +12,7 @@
             @if(!$software->confirmed_real)
                 <div class="alert alert-danger">
                     <p>This software has not been confirmed as real yet. Software versions are crowd-sourced on Meagle. To find out
-                        more about the process of review, read <a href="{{ route('process') }}">here</a>>.
+                        more about the process of review, read <a href="{{ route('process') }}">here</a>.
                 </div>
                 <p>Does this version exist?</p>
                 @include('review.version_vote', ['voting_type' => 'software', 'version' => $software])
