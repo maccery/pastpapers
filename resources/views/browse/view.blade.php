@@ -13,6 +13,7 @@
                 </ul>
                 @include('segment.confirmation_warnings', ['version' => $current_version])
                 @if(isset($current_version) and $current_version->canLeaveReview())
+                    @if ($current_version->negative > 0 or $current_version->positive > 0)
                     <h4><b>Verdict</b>: {{ $current_version->verdict }}</h4>
                     <div class="progress">
                         <div class="progress-bar progress-bar-success" style="width: {{ $current_version->percentagePositive }}%">
@@ -22,11 +23,11 @@
                             <span class="sr-only">{{ 100-$current_version->percentagePositive }}% negative</span>
                         </div>
                     </div>
+                    @endif
                     @include('segment.reviews', ['reviews' => $reviews->slice(0, 4)])
                     @include('segment.other_reviews', ['reviews' => $reviews->slice(4)])
                 @endif
             </div>
-
             <div class="col-sm-3 hidden-xs">
                 @if(!$software->confirmed_real)
                     <p>Does this exist?</p>
