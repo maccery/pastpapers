@@ -15,11 +15,11 @@
                 @if(isset($current_version) and $current_version->canLeaveReview())
                     <h4><b>Verdict</b>: {{ $current_version->verdict }}</h4>
                     <div class="progress">
-                        <div class="progress-bar progress-bar-success" style="width: {{ 10 * $current_version->positive }}%">
-                            <span class="sr-only">{{ 10 * $current_version->positive }}% positive</span>
+                        <div class="progress-bar progress-bar-success" style="width: {{ $current_version->percentagePositive }}%">
+                            <span class="sr-only">{{ $current_version->percentagePositive }}% positive</span>
                         </div>
-                        <div class="progress-bar progress-bar-danger" style="width: {{ 10 * $current_version->negative }}%">
-                            <span class="sr-only">{{ 10 * $current_version->negative }}% negative</span>
+                        <div class="progress-bar progress-bar-danger" style="width: {{ 100-$current_version->percentagePositive }}%">
+                            <span class="sr-only">{{ 100-$current_version->percentagePositive }}% negative</span>
                         </div>
                     </div>
                     @include('segment.reviews', ['reviews' => $reviews->slice(0, 4)])

@@ -56,6 +56,7 @@ AND T.tag_id = TT.id
 AND T.taggable_id = R.id 
 AND T.taggable_type = \'App\\\Review\' 
 AND V.id = ?
+AND R.deleted_at IS NULL
 GROUP BY tag_id
 ORDER BY total DESC
 LIMIT 10) B', [$this->id]);
@@ -63,7 +64,15 @@ LIMIT 10) B', [$this->id]);
     }
 
     public function getVerdictAttribute() {
-        $positive = $this->positive;
+
+        $total = $this->positive + $this->negative;
+
+        if ($total == 0)
+        {
+            return 'No concensus';
+        }
+        $positive = 100 * $this->positive / (float) $total;
+
         if ($positive > 60) {
             return 'Mainly positive';
         }
@@ -75,16 +84,17 @@ LIMIT 10) B', [$this->id]);
         }
     }
 
+    public function getPercentagePositiveAttribute() {
+        return 100 * $this->positive / (float) max($this->positive + $this->negative, 1);
+    }
+
     public function getPositiveAttribute() {
-        $total = max($this->tagCount('negative') + $this->tagCount('positive'), 1);
-        return $this->tagCount('positive') / $total;
+        return $this->tagCount('positive');
     }
 
     public function getNegativeAttribute() {
-        $total = max($this->tagCount('negative') + $this->tagCount('positive'), 1);
-        return $this->tagCount('negative') / $total;
+        return $this->tagCount('negative');
     }
-
 
     public function getRouteAttribute(){
         return route('browse_by_version', ['software' => $this->software, 'version' => $this]);
@@ -106,6 +116,7 @@ AND T.taggable_id = R.id
 AND T.taggable_type = \'App\\\Review\' 
 AND V.id = ?
 AND TT.type = ?
+AND R.deleted_at IS NULL
 GROUP BY tag_id
 ORDER BY total DESC) B', [$this->id, $tag_type]);
         })->count();
