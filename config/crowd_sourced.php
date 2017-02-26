@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'confirm_at' => 3,
-    'reject_at' => -3,
+    'confirm_at' => 15,
+    'reject_at' => -15,
     'voting_power' => [
         // These are in buckets: pick bucket with the smallest key greater than points
         -100000 => 0,

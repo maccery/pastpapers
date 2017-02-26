@@ -33,20 +33,21 @@ class UserVotedListener
     public function handle(UserVoted $event)
     {
         $votable = $event->votable;
-        // get users who voted FOR this thing
-        $users = array();
-        foreach ($votable->votes as $vote)
-        {
-            if ($vote->vote > 0) {
-                $users[] = $vote->author;
-            }
-        }
 
         if ($votable->points <= $this->reject_at)
         {
             $votable->delete();
 
             // dispatch a job to punish  users who voted for this
+            // get users who voted FOR this thing
+            $users = array();
+            foreach ($votable->votes as $vote)
+            {
+                if ($vote->vote > 0) {
+                    $users[] = $vote->author;
+                }
+            }
+
             dispatch(new PunishBadUsers(collect($users), $votable));
         }
         elseif ($votable->points >= $this->confirm_at)
@@ -54,6 +55,13 @@ class UserVotedListener
             $votable->confirmedReal();
 
             // dispatch a job to reward these users
+            $users = array();
+            foreach ($votable->votes as $vote)
+            {
+                if ($vote->vote < 0) {
+                    $users[] = $vote->author;
+                }
+            }
             dispatch(new RewardUsers(collect($users), $votable));
         }
     }

@@ -38,7 +38,7 @@ class RewardUsers implements ShouldQueue
 
         // Make a system vote
         $alert = Alert::firstOrCreate([
-            'description' => 'For correctly voting on ' . $this->votable->id,
+            'description' => 'For correctly voting on "' . $this->votable->fullName . '"',
             'user_id' => 1,
         ]);
 
