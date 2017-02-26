@@ -18,7 +18,7 @@
 <meta property="og:title" content="@yield('title','')Meagle: Impartial Software Reviews">
 <meta property="og:description" content="@yield('description', "Meagle is home to completely impartial software reviews, surfacing expert opinion from people who matter the most.")">
 <title>@yield('title','')Meagle: Impartial Software Reviews</title>
-<link rel="stylesheet" tfype="text/css" href="{{ secure_asset_production('css/app.css?v=8') }}">
+<link rel="stylesheet" type="text/css" href="{{ secure_asset_production(elixir('css/app.css')) }}">
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
