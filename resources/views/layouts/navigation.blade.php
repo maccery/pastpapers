@@ -37,6 +37,9 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="{{ route('user_area') }}">User area</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('view_user', ['user' => Auth::user()]) }}">Your profile</a>
                             </li>
                             <li>

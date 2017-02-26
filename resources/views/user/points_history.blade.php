@@ -1,3 +1,6 @@
+<p>Points are gained either when a user makes a positive contribution (such as a good review)
+or when a user votes on something, which in turn the community then votes in the same direction on.</p>
+
 <table class="table table-responsive">
     <tr>
         <th>Points rewarded</th>
