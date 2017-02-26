@@ -39,7 +39,7 @@ class PunishBadUsers implements ShouldQueue
 
         // Make a system vote
         $alert = Alert::firstOrCreate([
-            'description' => 'For correctly voting on ' . $this->votable->id,
+            'description' => 'For incorrectly voting on ' . $this->votable->id,
             'user_id' => 1,
         ]);
 
@@ -48,7 +48,7 @@ class PunishBadUsers implements ShouldQueue
         {
             Vote::firstOrCreate([
                 'votable_id' => $alert->id,
-                'vote' => 10,
+                'vote' => -10,
                 'user_id' => 1,
                 'votable_owner_id' => $user->id,
                 'votable_type' => 'App\Alert',
