@@ -12,4 +12,12 @@ class Question extends Votable
         'user_id',
         'confirmed_real',
     ];
+
+    public function getRouteAttribute(){
+        return route('help');
+    }
+
+    public function getFullNameAttribute() {
+        return $this->question;
+    }
 }
