@@ -25,6 +25,10 @@ class PostVoteController extends Controller
         {
             $votable = \App\SuggestedReleaseDate::where('id', $votable_id)->first();
         }
+        elseif ($type == 'question')
+        {
+            $votable = \App\Question::where('id', $votable_id)->first();
+        }
 
         $vote = $vote * $request->user()->voting_power;
 

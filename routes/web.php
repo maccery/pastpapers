@@ -24,7 +24,8 @@ Route::group(['middleware' => 'web'], function() {
     })->name('about');
 
     Route::get('/help', function () {
-        return view('general.help');
+        $questions = \App\Question::all();
+        return view('general.help', ['questions' => $questions]);
     })->name('help');
 
     Route::get('/process', function () {
@@ -88,6 +89,7 @@ Route::group(['middleware' => 'web'], function() {
 
 
     Route::post('/post', 'PostController@store')->middleware('auth')->name('post_review');
+    Route::post('/post_create_question', 'PostCreateQuestionController@store')->middleware('auth')->name('post_question');
     Route::post('/post_suggest_date', 'PostSuggestDateController@store')->middleware('auth')->name('post_suggest_date');
     Route::post('/post_create_verison',
         'PostCreateVersionController@store')->middleware('auth')->name('post_create_version');

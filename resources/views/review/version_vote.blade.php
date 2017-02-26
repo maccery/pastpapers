@@ -1,3 +1,4 @@
+@if(!$version->confirmed_real)
 @if (Auth::User())
 <ul class="list list-unstyled list-inline">
     <li><a class="{{ (isset($version->votedFor->vote) and $version->votedFor->vote >= 1) ? 'voted' : 'not-voted' }}"
@@ -10,3 +11,4 @@
 <p><small><a href="{{ url('/register') }}">Register</a> to vote</small></p>
 @endif
 @include('segment.consensus_box', ['votable' => $version])
+@endif
