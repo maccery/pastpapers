@@ -4,7 +4,7 @@
 
             <!-- Collapsed Hamburger -->
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
+                <span class="sr-only">Toggle Navigatihon</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -16,7 +16,6 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li><a href="{{ route('home') }}">Home</a></li>
-                <li><a href="{{ route('process') }}">How it works</a></li>
                 <li><a href="{{ route('browse') }}">Browse software</a></li>
             </ul>
             <div class="nav navbar-nav hidden-xs" style="padding-left:45px;">

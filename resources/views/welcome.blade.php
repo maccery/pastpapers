@@ -3,9 +3,9 @@
     <div class="content-row-black">
         <div class="container">
             <ul class="list list-inline">
-                <li><a href="{{ route('process') }}">What is Meagle?</a></li>
+                <li><a href="{{ route('about') }}">What is Meagle?</a></li>
                 <li class="pull-right">
-                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('login') }}">{{ (Auth::user()) ? Auth::user()->name : 'Login'}}</a>
                 </li>
             </ul>
         </div>

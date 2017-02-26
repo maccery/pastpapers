@@ -19,6 +19,14 @@ Route::group(['middleware' => 'web'], function() {
         return view('welcome');
     })->name('home');
 
+    Route::get('/about', function () {
+        return view('general.about');
+    })->name('about');
+
+    Route::get('/help', function () {
+        return view('general.help');
+    })->name('help');
+
     Route::get('/process', function () {
         return view('review.process');
     })->name('process');

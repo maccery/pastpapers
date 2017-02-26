@@ -15,9 +15,8 @@ require('laravel-elixir-vue-2');
 
 elixir(function(mix) {
     mix.less('app.less')
-        .version('css/app.css')
         .scripts('app.js')
-        .version('js/app.js')
+        .version(['css/app.css', 'js/app.js'])
         .copy('bower_components/bootstrap/fonts', 'public/fonts')
         .copy('bower_components/jquery/dist/jquery.min.js', 'public/js')
         .copy('bower_components/bootstrap/dist/js/bootstrap.min.js', 'public/js');

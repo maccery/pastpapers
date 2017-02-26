@@ -25,6 +25,7 @@
                     </small>
                 </p>
             </div>
+            <p><a href="{{ route('view_user', ['user' => $user]) }}">How were my points calculated?</a></p>
         </div>
     </div>
 @endsection
