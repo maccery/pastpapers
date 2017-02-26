@@ -12,7 +12,7 @@
             <div class="form-group">
                 <label for="description">Review body</label>
                 <textarea class="form-control" rows="8" id="description" name="description" class="input-group input-lg" placeholder="Your review here">{{ old('description') }}</textarea>
-            </div>
+            </div>h
             <div class="form-group">
                 <label for="title">What didn't you like?</label> Separate with commas
                 <input class="form-control" name="negative" class="input-group input-lg" placeholder="Negative tags" value="{{ old('negative') }}">

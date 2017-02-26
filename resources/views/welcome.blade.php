@@ -5,6 +5,9 @@
             <ul class="list list-inline">
                 <li><a href="{{ route('about') }}">What is Meagle?</a></li>
                 <li class="pull-right">
+                    <a href="{{ route('register') }}">{{ (Auth::user()) ? '' : 'Register'}}</a>
+                </li>
+                <li class="pull-right">
                     <a href="{{ route('login') }}">{{ (Auth::user()) ? Auth::user()->name : 'Login'}}</a>
                 </li>
             </ul>

@@ -6739,9 +6739,14 @@ h4 {
   position: fixed;
   bottom: 20px;
   right: 20px;
+  z-index: 6;
 }
 .help img {
   width: 50px;
+}
+.verified {
+  position: relative;
+  top: -4px;
 }
 /* Custom variables */
 /* Content rows */

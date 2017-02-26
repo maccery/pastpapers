@@ -19,5 +19,7 @@ elixir(function(mix) {
         .version(['css/app.css', 'js/app.js'])
         .copy('bower_components/bootstrap/fonts', 'public/fonts')
         .copy('bower_components/jquery/dist/jquery.min.js', 'public/js')
-        .copy('bower_components/bootstrap/dist/js/bootstrap.min.js', 'public/js');
+        .copy('bower_components/bootstrap/dist/js/bootstrap.min.js', 'public/js')
+        .copy('bower_components/simplemde/src/js/*', 'public/js')
+    .copy('bower_components/simplemde/src/css/simplemde.css', 'public/css');
 });

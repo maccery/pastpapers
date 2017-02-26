@@ -56,7 +56,6 @@ class User extends Authenticatable
             'techcrunch.com',
             'ed.ac.uk',
             'wired.com',
-            'me.com',
         );
 
         if (in_array($this->emailDomain(), $top_email_domains))
@@ -65,7 +64,6 @@ class User extends Authenticatable
         }
 
     }
-
 
     public function getRouteAttribute(){
         return route('view_user', ['user' => $this]);
