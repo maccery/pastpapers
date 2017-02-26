@@ -1,4 +1,16 @@
 @extends('layouts.no_header')
+@section('header')
+    <div class="content-row-black">
+        <div class="container">
+            <ul class="list list-inline">
+                <li><a href="{{ route('process') }}">What is Meagle?</a></li>
+                <li class="pull-right">
+                    <a href="{{ route('login') }}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+@endsection
 @section('content')
     <div class="content-row-black">
         <div class="container text-center">

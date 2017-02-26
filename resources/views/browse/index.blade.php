@@ -9,12 +9,18 @@
             </ul>
             <p>Don't see the software you want? <a href="{{ route('create_software') }}">Add it</a></p>
             <table class="table">
-                <th>Name</th>
-                <th>Confirmed</th>
+                <? $previous_letter = ''; ?>
                 @foreach ($softwares as $software)
+                    <? $current_letter = ucfirst(substr($software->name, 0, 1)); ?>
+                    @if ($current_letter != $previous_letter)
+                    <? $previous_letter = $current_letter ?>
+            </table>
+            <h2>{{ $previous_letter }}</h2>
+                <table class="table table-responsive">
+                    @endif
                     <tr>
                         <td><a href="{{ route('browse_name', $software->id) }}">{{ $software->name }}</a></td>
-                        <td>{{ ($software->confirmed_real) ? 'Yes' : 'No' }}</td>
+                        
                     </tr>
                 @endforeach
             </table>
