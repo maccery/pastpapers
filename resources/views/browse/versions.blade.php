@@ -14,19 +14,17 @@
                     <p>This software has not been confirmed as real yet. Software versions are crowd-sourced on Meagle. To find out
                         more about the process of review, read <a href="{{ route('process') }}">here</a>.
                 </div>
-                <p>Does this version exist?</p>
+                <p>Does this piece of software exist?</p>
                 @include('review.version_vote', ['voting_type' => 'software', 'version' => $software])
             @else
-            <p>Don't see the version you want? <a href="{{ route('create_version', ['software' => $software]) }}">Add it</a></p>
+            <p>Don't see the version of {{ $software->name }} you're looking for? <a href="{{ route('create_version', ['software' => $software]) }}">Add it</a></p>
             <table class="table">
                 <th>Name</th>
                 <th>Release date</th>
-                <th>Confirmed</th>
                 @foreach ($versions as $version)
                     <tr>
                         <td><a href="{{ route('browse_by_version', ['software' => $version->software->id, 'version' => $version->id]) }}">{{ $version->software->name }} {{ $version->version }}</a></td>
                         <td>{{ $version->release_date or '' }}</td>
-                        <td>{{ ($version->confirmed_real) ? 'Yes' : 'No' }}</td>
                     </tr>
                 @endforeach
             </table>

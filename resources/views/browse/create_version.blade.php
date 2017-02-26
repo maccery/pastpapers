@@ -2,11 +2,11 @@
 @section('content')
 <div class="content-row">
     <div class="container">
-        <h1>Create a new version</h1>
+        <h1>Add a new version of {{ $software->name }}</h1>
         <ul class="breadcrumb">
             <li><a href="{{ route('browse') }}">Browse</a></li>
             <li><a href="{{ route('browse_name', ['software' => $software]) }}">{{ $software->name }}</a></li>
-            <li class="active">Create version</li>
+            <li class="active">Add version</li>
         </ul>
         <form method="POST" action="{{ route('post_create_version') }}">
             <div class="form-group">

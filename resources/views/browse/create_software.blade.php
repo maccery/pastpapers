@@ -7,7 +7,9 @@
                 <li><a href="{{ route('browse') }}">Browse</a></li>
                 <li class="active">Create software</li>
             </ul>
-            <p>If you add a piece of software to the platform users will be able to review it.</p>
+            <div class="alert alert-warning">
+                <p>If you add a piece of software to the platform users will be able to review it. This is known as crowd-sourcing. You can read about how this works <a href="{{ route('process') }}">here</a>.</p>
+            </div>
             <form method="POST" action="{{ route('post_create_software') }}">
                 <div class="form-group">
                     <input class="form-control" name="name" class="input-group input-lg" placeholder="Enter software name here">

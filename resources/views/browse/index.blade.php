@@ -20,7 +20,7 @@
                     @endif
                     <tr>
                         <td><a href="{{ route('browse_name', $software->id) }}">{{ $software->name }}</a></td>
-                        
+
                     </tr>
                 @endforeach
             </table>
