@@ -9,6 +9,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Review body</label>
+                <p><small>You can use <a target="_blank" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a> for formatting your post.</small></p>
                 <textarea class="form-control" rows="8" id="description" name="description" class="input-group input-lg" placeholder="Your review here">{{ old('description') }}</textarea>
             </div>
             <div class="form-group">

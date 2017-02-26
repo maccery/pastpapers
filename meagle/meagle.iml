@@ -4,6 +4,8 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/..">
       <excludeFolder url="file://$MODULE_DIR$/../vendor/browner12/helpers" />
+      <excludeFolder url="file://$MODULE_DIR$/../vendor/haleks/laravel-markdown" />
+      <excludeFolder url="file://$MODULE_DIR$/../vendor/league/commonmark" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
@@ -32,10 +34,14 @@
       <library name="PHP" type="php">
         <CLASSES>
           <root url="file://$MODULE_DIR$/../vendor/browner12/helpers" />
+          <root url="file://$MODULE_DIR$/../vendor/haleks/laravel-markdown" />
+          <root url="file://$MODULE_DIR$/../vendor/league/commonmark" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/../vendor/browner12/helpers" />
+          <root url="file://$MODULE_DIR$/../vendor/haleks/laravel-markdown" />
+          <root url="file://$MODULE_DIR$/../vendor/league/commonmark" />
         </SOURCES>
       </library>
     </orderEntry>

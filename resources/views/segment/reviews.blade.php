@@ -18,7 +18,7 @@
                     <small>{{ $review->created_at->diffForHumans() }}</small></h4>
                     <?php $paragraphs = explode(PHP_EOL, $review->description); ?>
                     @foreach($paragraphs as $paragraph)
-                        <p>{{{ $paragraph }}}</p>
+                        <p>{% $paragraph %}</p>
                     @endforeach
                     <p>@include('segment.tags', ['tags' => $review->tags])</p>
                 </td>

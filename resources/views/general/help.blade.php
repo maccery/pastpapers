@@ -9,7 +9,7 @@
                 <h2>{{ $question->question }}</h2>
                 <?php $paragraphs = explode(PHP_EOL, $question->answer); ?>
                 @foreach($paragraphs as $paragraph)
-                    <p>{{ $paragraph }}</p>
+                    <p>{% $paragraph %}</p>
                 @endforeach
                 @if(!$question->confirmed_real)
                     <p><small>Is this a good question?</small></p>
