@@ -51,6 +51,21 @@ class User extends Authenticatable
         return $email_parts[1];
     }
 
+    public function getLevelAttribute() {
+        $voting_power_buckets = Config::get('crowd_sourced.voting_power');
+        $points = $this->points;
+        $level = 0;
+        $max_level = 0;
+        foreach ($voting_power_buckets as $key => $value)
+        {
+            if ($points > $key) {
+                $level++;
+            }
+            $max_level++;
+        }
+        return array($level, $max_level);
+    }
+
     public function isTopUser() {
         $top_email_domains = array(
             'techcrunch.com',

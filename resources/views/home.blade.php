@@ -25,6 +25,14 @@
                     </small>
                 </p>
             </div>
+            <div class="alert alert-info">
+                <p><b>You are level {{ $user->level[0] }}/{{ $user->level[1] }}</b></p>
+                <p>
+                    <small>This is how far you have climbed to the top of the Meagle ladder! The greater your level, the
+                        more voting power you have.
+                    </small>
+                </p>
+            </div>
             <p><a href="{{ route('view_user', ['user' => $user]) }}">How were my points calculated?</a></p>
         </div>
     </div>
