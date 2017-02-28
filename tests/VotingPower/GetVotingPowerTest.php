@@ -18,4 +18,5 @@ class VotingPowerTest extends TestCase
         $voting_power = $user->getVotingPower();
         $this->assertEquals(1, $voting_power);
     }
+
 }

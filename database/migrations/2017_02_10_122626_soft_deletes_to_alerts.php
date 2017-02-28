@@ -26,7 +26,7 @@ class SoftDeletesToAlerts extends Migration
     public function down()
     {
         Schema::table('alerts', function (Blueprint $table) {
-            $table->dropColumn('delete_at');
+            $table->dropColumn('deleted_at');
         });
     }
 }
