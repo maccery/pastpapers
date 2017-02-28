@@ -51,6 +51,27 @@ class User extends Authenticatable
         return $email_parts[1];
     }
 
+    public function getVotingPower()
+    {
+        $voting_power_buckets = Config::get('crowd_sourced.voting_power');
+        $points = $this->points;
+        $max_points = 0;
+        foreach ($voting_power_buckets as $key => $value)
+        {
+            if ($points > $key) {
+                $max_points = $value;
+            }
+        }
+        return $max_points;
+    }
+
+    public function updateVotingPower() {
+        $new_voting_power = $this->getVotingPower();
+        $this->points = $this->votes->sum('vote');
+        $this->voting_power = $new_voting_power;
+        $this->save();
+    }
+
     public function getLevelAttribute() {
         $voting_power_buckets = Config::get('crowd_sourced.voting_power');
         $points = $this->points;
