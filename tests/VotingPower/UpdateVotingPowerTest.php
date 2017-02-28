@@ -1,35 +1,36 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-
 class UpdateVotingPowerTest extends TestCase
 {
+    protected $userMock;
 
-    use DatabaseMigrations;
-    use DatabaseTransactions;
+    public function setUp() {
+        parent::setUp();
+
+        $user = factory(App\User::class)->make();
+        $this->userMock = Mockery::mock($user);
+        $this->userMock->shouldReceive('updateVotingPower')->passthru();
+        $this->userMock->shouldReceive('save')->andReturnNull();
+    }
 
     public function testUpdateVotingPower()
     {
-        $user = factory(App\User::class)->make();
-        $user->points = 55;
-        $user->updateVotingPower();
-        $this->assertEquals(10, $user->voting_power);
+        $this->userMock->points = 55;
+        $this->userMock->updateVotingPower();
+        $this->assertEquals(10, $this->userMock->voting_power);
     }
 
     public function testUpdateVotingPowerTwo()
     {
-        $user = factory(App\User::class)->make();
-        $user->points = 0;
-        $user->updateVotingPower();
-        $this->assertEquals(1, $user->voting_power);
+        $this->userMock->points = 0;
+        $this->userMock->updateVotingPower();
+        $this->assertEquals(1, $this->userMock->voting_power);
     }
 
     public function testUpdateVotingPowerThree()
     {
-        $user = factory(App\User::class)->make();
-        $user->points = -5;
-        $user->updateVotingPower();
-        $this->assertEquals(0, $user->voting_power);
+        $this->userMock->points = -5;
+        $this->userMock->updateVotingPower();
+        $this->assertEquals(0, $this->userMock->voting_power);
     }
 }

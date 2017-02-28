@@ -48,6 +48,8 @@ class User extends Authenticatable
     public function emailDomain() {
         $email_parts = explode('@', $this->email);
 
+        if (count($email_parts) <= 1) return null;
+
         return $email_parts[1];
     }
 
@@ -67,7 +69,7 @@ class User extends Authenticatable
 
     public function updateVotingPower() {
         $new_voting_power = $this->getVotingPower();
-        $this->points = $this->votes->sum('vote');
+        //$this->points = $this->votes->sum('vote');
         $this->voting_power = $new_voting_power;
         $this->save();
     }
@@ -99,6 +101,7 @@ class User extends Authenticatable
             return $this->emailDomain();
         }
 
+        return False;
     }
 
     public function getRouteAttribute(){
