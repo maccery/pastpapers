@@ -27,6 +27,6 @@ class CreateSoftwareTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Software');
+        Schema::dropIfExists('software');
     }
 }

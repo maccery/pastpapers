@@ -27,7 +27,7 @@ class AddForeignKeyOnSoftare extends Migration
     public function down()
     {
         Schema::table('reviews', function (Blueprint $table) {
-            $table->dropForeign('version_id');
+            $table->dropForeign('reviews_version_id_foreign');
             $table->dropColumn('version_id');
         });
     }

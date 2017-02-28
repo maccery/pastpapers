@@ -26,7 +26,7 @@ class AddSoftDeleteToReviews extends Migration
     public function down()
     {
         Schema::table('reviews', function ($table) {
-            $table->dropColum('deleted_at');
+            $table->dropColumn('deleted_at');
         });
     }
 }

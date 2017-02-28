@@ -25,7 +25,7 @@ class DropSoftwareReleaseDates extends Migration
      */
     public function down()
     {
-        Schema::table('suggested_release_date_votes', function (Blueprint $table) {
+        Schema::create('suggested_release_date_votes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('vote');
             $table->integer('user_id')->unsigned();

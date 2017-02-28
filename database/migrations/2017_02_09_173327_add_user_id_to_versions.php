@@ -27,8 +27,10 @@ class AddUserIdToVersions extends Migration
     public function down()
     {
         Schema::table('versions', function (Blueprint $table) {
-            $table->dropForeign('softwares_user_id_foreign');
-            $table->dropColumn('softwares');
+            $table->dropForeign('versions_user_id_foreign');
+        });
+        Schema::table('versions', function (Blueprint $table) {
+            $table->dropColumn('user_id');
         });
     }
 }

@@ -26,7 +26,7 @@ class AddSoftDeletesToSoftware extends Migration
     public function down()
     {
         Schema::table('softwares', function (Blueprint $table) {
-            $table->dropColumn('delete_at');
+            $table->dropColumn('deleted_at');
         });
     }
 }

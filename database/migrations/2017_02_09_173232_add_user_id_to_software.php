@@ -28,7 +28,10 @@ class AddUserIdToSoftware extends Migration
     {
         Schema::table('softwares', function (Blueprint $table) {
             $table->dropForeign('softwares_user_id_foreign');
-            $table->dropColumn('softwares');
+        });
+
+        Schema::table('softwares', function (Blueprint $table) {
+            $table->dropColumn('user_id');
         });
     }
 }

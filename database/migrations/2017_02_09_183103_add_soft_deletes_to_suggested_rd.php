@@ -26,7 +26,7 @@ class AddSoftDeletesToSuggestedRd extends Migration
     public function down()
     {
         Schema::table('suggested_release_dates', function (Blueprint $table) {
-            $table->dropColumn('delete_at');
+            $table->dropColumn('deleted_at');
         });
     }
 }
