@@ -1,6 +1,6 @@
 <?php
 
-class VotingPowerTest extends TestCase
+class GetVotingPowerTest extends TestCase
 {
 
     public function testVotingPower()

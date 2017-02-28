@@ -58,7 +58,7 @@ class User extends Authenticatable
         $max_points = 0;
         foreach ($voting_power_buckets as $key => $value)
         {
-            if ($points > $key) {
+            if ($points >= $key) {
                 $max_points = $value;
             }
         }
@@ -75,11 +75,11 @@ class User extends Authenticatable
     public function getLevelAttribute() {
         $voting_power_buckets = Config::get('crowd_sourced.voting_power');
         $points = $this->points;
-        $level = 0;
+        $level = -1;
         $max_level = 0;
         foreach ($voting_power_buckets as $key => $value)
         {
-            if ($points > $key) {
+            if ($points >= $key) {
                 $level++;
             }
             $max_level++;
