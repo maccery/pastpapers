@@ -2,17 +2,14 @@
 
 class UpdateVotingPowerTest extends TestCase
 {
-    protected $userMock;
-
     public function setUp() {
         parent::setUp();
-
-        $user = factory(App\User::class)->make();
-        $this->userMock = Mockery::mock($user);
-        $this->userMock->shouldReceive('updateVotingPower')->passthru();
         $this->userMock->shouldReceive('save')->andReturnNull();
     }
 
+    /**
+     * @group UpdateVotingPowerTest
+     */
     public function testUpdateVotingPower()
     {
         $this->userMock->points = 55;
@@ -20,6 +17,9 @@ class UpdateVotingPowerTest extends TestCase
         $this->assertEquals(10, $this->userMock->voting_power);
     }
 
+    /**
+     * @group UpdateVotingPowerTest
+     */
     public function testUpdateVotingPowerTwo()
     {
         $this->userMock->points = 0;
@@ -27,6 +27,9 @@ class UpdateVotingPowerTest extends TestCase
         $this->assertEquals(1, $this->userMock->voting_power);
     }
 
+    /**
+     * @group UpdateVotingPowerTest
+     */
     public function testUpdateVotingPowerThree()
     {
         $this->userMock->points = -5;

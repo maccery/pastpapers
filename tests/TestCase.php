@@ -9,6 +9,13 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
      */
     protected $baseUrl = 'http://localhost';
 
+    public $userMock;
+
+    public function setUp() {
+        parent::setUp();
+        $this->userMock = Mockery::mock('Illuminate\Database\Eloquent\Model', 'App\User')->makePartial();
+    }
+
     /**
      * Creates the application.
      *

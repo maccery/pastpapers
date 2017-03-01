@@ -24,3 +24,21 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'voting_power' => 1,
     ];
 });
+
+$factory->define(App\Version::class, function (Faker\Generator $faker) {
+    return [
+        'version' => $faker->name,
+        'release_date' => $faker->date(),
+        'confirmed_real' => 0,
+        'confirmed_release_date' => null,
+        'software_id' =>factory(App\User::class)->create()->id,
+        'user_id' => factory(App\Software::class)->create()->id,
+    ];
+});
+
+$factory->define(App\Software::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'user_id' => factory(App\Software::class)->create()->id,
+    ];
+});

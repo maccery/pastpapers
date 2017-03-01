@@ -4,15 +4,13 @@ class EmailDomainTest extends TestCase
 {
 
     public function testNoDomain() {
-        $user = factory(App\User::class)->make();
-        $user->email = '';
-        $this->assertEquals(null, $user->emailDomain());
+        $this->userMock->email = '';
+        $this->assertEquals(null, $this->userMock->emailDomain());
     }
 
     public function testOneDomain() {
-        $user = factory(App\User::class)->make();
-        $user->email = 'tom@christmas.com';
-        $this->assertEquals('christmas.com', $user->emailDomain());
+        $this->userMock->email = 'tom@christmas.com';
+        $this->assertEquals('christmas.com', $this->userMock->emailDomain());
     }
 
 }

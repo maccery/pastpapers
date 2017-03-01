@@ -3,19 +3,27 @@
 class GetVotingPowerTest extends TestCase
 {
 
+    public function setUp() {
+        parent::setUp();
+    }
+
+    /**
+     * @group GetVotingPowerTest
+     */
     public function testVotingPower()
     {
-        $user = factory(App\User::class)->make();
-        $user->points = 55;
-        $voting_power = $user->getVotingPower();
+        $this->userMock->points = 55;
+        $voting_power = $this->userMock->getVotingPower();
         $this->assertEquals(10, $voting_power);
     }
 
+    /**
+     * @group GetVotingPowerTest
+     */
     public function testVotingPowerTwo()
     {
-        $user = factory(App\User::class)->make();
-        $user->points = 0;
-        $voting_power = $user->getVotingPower();
+        $this->userMock->points = 0;
+        $voting_power = $this->userMock->getVotingPower();
         $this->assertEquals(1, $voting_power);
     }
 

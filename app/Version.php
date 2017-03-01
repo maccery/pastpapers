@@ -84,10 +84,6 @@ LIMIT 10) B', [$this->id]);
         }
     }
 
-    public function getPercentagePositiveAttribute() {
-        return 100 * $this->positive / (float) max($this->positive + $this->negative, 1);
-    }
-
     public function getPositiveAttribute() {
         return $this->tagCount('positive');
     }
