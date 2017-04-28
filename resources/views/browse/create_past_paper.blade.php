@@ -2,16 +2,16 @@
 @section('content')
 <div class="content-row">
     <div class="container">
-        <h1>Add a new version of {{ $software->name }}</h1>
+        <h1>Add a new past paper for {{ $subject->name }}</h1>
         <ul class="breadcrumb">
             <li><a href="{{ route('browse') }}">Browse</a></li>
-            <li><a href="{{ route('browse_name', ['software' => $software]) }}">{{ $software->name }}</a></li>
-            <li class="active">Add version</li>
+            <li><a href="{{ route('browse_name', ['subject' => $subject]) }}">{{ $subject->name }}</a></li>
+            <li class="active">Add past paper</li>
         </ul>
-        <form method="POST" action="{{ route('post_create_version') }}">
+        <form method="POST" action="{{ route('post_create_past_paper') }}">
             <div class="form-group">
-                <input type="hidden" name="software_id" value="{{ $software->id }}">
-                <input class="form-control" rows="5" name="version_name" class="input-group input-lg" placeholder="Enter version name here">
+                <input type="hidden" name="subject_id" value="{{ $subject->id }}">
+                <input class="form-control" rows="5" name="past_paper_name" class="input-group input-lg" placeholder="Enter past paper name here">
             </div>
             @if (Auth::guest())
                 <p><small><a href="{{ url('/register') }}">Register</a> to submit</small></p>

@@ -1,50 +1,50 @@
 @extends('layouts.app')
-@section('title', $software->name . ' ' . $current_version->version . ' | ')
-@section('description', 'Get impartial reviews and advice about ' . $software->name . ' ' . $current_version->version . '. Should you upgrade? Read what the experts are saying.')
+@section('title', $subject->name . ' ' . $current_past_paper->past_paper . ' | ')
+@section('description', 'Get impartial answers and advice about ' . $subject->name . ' ' . $current_past_paper->past_paper . '. Should you upgrade? Read what the experts are saying.')
 @section('content')
     <div class="content-row">
         <div class="container">
             <div class="col-sm-9">
-                <h1>{{ $software->name }} {{ $current_version->version }} reviews</h1>
+                <h1>{{ $subject->name }} {{ $current_past_paper->past_paper }} answers</h1>
                 <ul class="breadcrumb">
                     <li><a href="{{ route('browse') }}">Browse</a></li>
-                    <li><a href="{{ route('browse_name', ['software' => $software]) }}">{{ $software->name }}</a></li>
-                    <li class="active">{{ $software->name }} {{ $current_version->version }}</li>
+                    <li><a href="{{ route('browse_name', ['subject' => $subject]) }}">{{ $subject->name }}</a></li>
+                    <li class="active">{{ $subject->name }} {{ $current_past_paper->past_paper }}</li>
                 </ul>
-                @include('segment.confirmation_warnings', ['version' => $current_version])
-                @if(isset($current_version) and $current_version->canLeaveReview())
-                    @if ($current_version->negative > 0 or $current_version->positive > 0)
-                    <h4><b>Verdict</b>: {{ $current_version->verdict }}</h4>
+                @include('segment.confirmation_warnings', ['past_paper' => $current_past_paper])
+                @if(isset($current_past_paper) and $current_past_paper->canLeaveAnswer())
+                    @if ($current_past_paper->negative > 0 or $current_past_paper->positive > 0)
+                    <h4><b>Verdict</b>: {{ $current_past_paper->verdict }}</h4>
                     <div class="progress">
-                        <div class="progress-bar progress-bar-success" style="width: {{ $current_version->percentagePositive }}%">
-                            <span class="sr-only">{{ $current_version->percentagePositive }}% positive</span>
+                        <div class="progress-bar progress-bar-success" style="width: {{ $current_past_paper->percentagePositive }}%">
+                            <span class="sr-only">{{ $current_past_paper->percentagePositive }}% positive</span>
                         </div>
-                        <div class="progress-bar progress-bar-danger" style="width: {{ 100-$current_version->percentagePositive }}%">
-                            <span class="sr-only">{{ 100-$current_version->percentagePositive }}% negative</span>
+                        <div class="progress-bar progress-bar-danger" style="width: {{ 100-$current_past_paper->percentagePositive }}%">
+                            <span class="sr-only">{{ 100-$current_past_paper->percentagePositive }}% negative</span>
                         </div>
                     </div>
                     @endif
-                    @include('segment.reviews', ['reviews' => $reviews->slice(0, 4)])
-                    @include('segment.other_reviews', ['reviews' => $reviews->slice(4)])
+                    @include('segment.answers', ['answers' => $answers->slice(0, 4)])
+                    @include('segment.other_answers', ['answers' => $answers->slice(4)])
                 @endif
             </div>
             <div class="col-sm-3 hidden-xs">
-                @if(!$software->confirmed_real)
+                @if(!$subject->confirmed_real)
                     <p>Does this exist?</p>
-                    @include('review.version_vote', ['voting_type' => 'software', 'version' => $software])
+                    @include('answer.past_paper_vote', ['voting_type' => 'subject', 'past_paper' => $subject])
                 @endif
-                @if(isset($current_version) and !$current_version->canLeaveReview())
-                    @include('segment.version_info', ['version' => $current_version])
+                @if(isset($current_past_paper) and !$current_past_paper->canLeaveAnswer())
+                    @include('segment.past_paper_info', ['past_paper' => $current_past_paper])
                 @else
-                    @include('segment.tags', ['tags' => $current_version->topTags()])
+                    @include('segment.tags', ['tags' => $current_past_paper->topTags()])
                 @endif
             </div>
         </div>
     </div>
-    @if(isset($current_version) and $current_version->canLeaveReview())
+    @if(isset($current_past_paper) and $current_past_paper->canLeaveAnswer())
         <div class="content-row-grey">
             <div class="container">
-                @include('review.create', ['current_version' => $current_version])
+                @include('answer.create', ['current_past_paper' => $current_past_paper])
             </div>
         </div>
     @endif

@@ -1,7 +1,7 @@
 <h3>Suggest a different date</h3>
 <form method="POST" action="{{ route('post_suggest_date') }}">
     <div class="form-group">
-        <input type="hidden" name="version_id" value="{{ $version->id }}">
+        <input type="hidden" name="past_paper_id" value="{{ $past_paper->id }}">
         <input class="form-control" rows="5" name="release_date" class="input-group input-lg" placeholder="Enter date here (mm/dd/yyyy)">
     </div>
 @if (Auth::guest())

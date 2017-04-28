@@ -18,16 +18,16 @@
     <div class="content-row-black">
         <div class="container text-center">
             <img class="img-circle logo-large" src="{{ secure_asset_production('images/logo.png') }}">
-            <p>Find software reviews about...</p>
+            <p>Find answers about...</p>
             @include('segment.search_box')
-            <p>or <a href="{{ route('browse') }}">browse software</a></p>
+            <p>or <a href="{{ route('browse') }}">browse past papers</a></p>
         </div>
     </div>
     <div class="content-row">
         <div class="container">
-            <h2>Meagle is home to completely impartial software reviews</h2>
+            <h2>Meagle is home to crowdsourced subject answers</h2>
             <p>
-                We’re a self-moderating community of reviews about pieces of software.
+                We’re a self-moderating community of answers about pieces of subject.
             </p>
         </div>
     </div>
@@ -36,14 +36,14 @@
         <div class="container">
             <h2>We mean impartial</h2>
             <p>We’re free and open-source. You can’t buy an advert on our website.
-                Our reviews are totally free from sponsorship and advertising.
+                Our answers are totally free from sponsorship and advertising.
             </p>
         </div>
     </div>
     <div class="content-row">
         <div class="container">
             <h2>How it works</h2>
-            <p>Write a review on a piece of software you've used recently. Or browse recent reviews. Can't find something? Then add it.
+            <p>Write a answer on a piece of subject you've used recently. Or browse recent answers. Can't find something? Then add it.
             </p>
         </div>
     </div>

@@ -14,7 +14,7 @@
                 @if(!$question->confirmed_real)
                     <p><small>Is this a good question?</small></p>
                 @endif
-                @include('review.version_vote', ['voting_type' => 'question', 'version' => $question])
+                @include('answer.past_paper_vote', ['voting_type' => 'question', 'past_paper' => $question])
             @endforeach
         </div>
     </div>

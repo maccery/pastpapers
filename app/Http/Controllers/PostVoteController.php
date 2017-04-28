@@ -10,16 +10,16 @@ class PostVoteController extends Controller
 {
     public function store(Request $request, $type, $votable_id, $vote)
     {
-        if ($type == 'review') {
-            $votable = \App\Review::where('id', $votable_id)->first();
+        if ($type == 'answer') {
+            $votable = \App\Answer::where('id', $votable_id)->first();
         }
-        elseif ($type == 'version')
+        elseif ($type == 'past_paper')
         {
-            $votable = \App\Version::where('id', $votable_id)->first();
+            $votable = \App\PastPaper::where('id', $votable_id)->first();
         }
-        elseif ($type == 'software')
+        elseif ($type == 'subject')
         {
-            $votable = \App\Software::where('id', $votable_id)->first();
+            $votable = \App\Subject::where('id', $votable_id)->first();
         }
         elseif ($type == 'suggested_release_date')
         {

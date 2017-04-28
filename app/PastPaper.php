@@ -6,27 +6,27 @@ use Carbon\Carbon;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Version extends Votable
+class PastPaper extends Votable
 {
 
     protected $fillable = [
         'id',
-        'version',
+        'past_paper',
         'release_date',
         'confirmed_real',
         'confirmed_release_date',
-        'software_id',
+        'subject_id',
         'user_id',
     ];
 
-    public function software()
+    public function subject()
     {
-        return $this->belongsTo('App\Software');
+        return $this->belongsTo('App\Subject');
     }
 
-    public function reviews()
+    public function answers()
     {
-        return $this->hasMany('App\Review');
+        return $this->hasMany('App\Answer');
     }
 
     public function suggestedDates()
@@ -34,7 +34,7 @@ class Version extends Votable
         return $this->hasMany('App\SuggestedReleaseDate');
     }
 
-    public function canLeaveReview()
+    public function canLeaveAnswer()
     {
         return $this->confirmed_real and $this->isReleased();
     }
@@ -50,11 +50,11 @@ class Version extends Votable
             $query->selectRaw('tag_id FROM  (
             SELECT
  COUNT(tag_id) total, tag_id
-FROM tags TT, taggables T, reviews R, versions V 
-WHERE V.id = R.version_id 
+FROM tags TT, taggables T, answers R, past_papers V 
+WHERE V.id = R.past_paper_id 
 AND T.tag_id = TT.id
 AND T.taggable_id = R.id 
-AND T.taggable_type = \'App\\\Review\' 
+AND T.taggable_type = \'App\\\Answer\' 
 AND V.id = ?
 AND R.deleted_at IS NULL
 GROUP BY tag_id
@@ -98,11 +98,11 @@ LIMIT 10) B', [$this->id]);
     }
 
     public function getRouteAttribute(){
-        return route('browse_by_version', ['software' => $this->software, 'version' => $this]);
+        return route('browse_by_past_paper', ['subject' => $this->subject, 'past_paper' => $this]);
     }
 
     public function getFullNameAttribute() {
-        return $this->version;
+        return $this->past_paper;
     }
 
     private function tagCount($tag_type) {
@@ -110,11 +110,11 @@ LIMIT 10) B', [$this->id]);
             $query->selectRaw('tag_id FROM  (
             SELECT
  COUNT(tag_id) total, tag_id
-FROM tags TT, taggables T, reviews R, versions V 
-WHERE V.id = R.version_id 
+FROM tags TT, taggables T, answers R, past_papers V 
+WHERE V.id = R.past_paper_id 
 AND T.tag_id = TT.id
 AND T.taggable_id = R.id 
-AND T.taggable_type = \'App\\\Review\' 
+AND T.taggable_type = \'App\\\Answer\' 
 AND V.id = ?
 AND TT.type = ?
 AND R.deleted_at IS NULL

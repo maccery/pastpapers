@@ -5,20 +5,20 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Review extends Votable
+class Answer extends Votable
 {
 
     protected $fillable = [
         'description',
         'user_id',
-        'version_id',
-        'software_id',
+        'past_paper_id',
+        'subject_id',
         'title',
     ];
 
-    public function version()
+    public function past_paper()
     {
-        return $this->belongsTo('App\Version');
+        return $this->belongsTo('App\PaperQuestion');
     }
 
     public function tags()
@@ -27,7 +27,7 @@ class Review extends Votable
     }
 
     public function getRouteAttribute(){
-        return route('review', ['review' => $this]);
+        return route('answer', ['answer' => $this]);
     }
 
     public function getFullNameAttribute() {

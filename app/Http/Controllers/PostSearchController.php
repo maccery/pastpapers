@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Version;
+use App\PastPaper;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostSearchRequest;
 
@@ -12,8 +12,8 @@ class PostSearchController extends Controller
     {
         $search_query = $request->input('query');
 
-        $versions = Version::where('version', 'like', '%' . $search_query . '%')
-            ->orWhereHas('software', function($q) use ($search_query) {
+        $past_papers = PastPaper::where('past_paper', 'like', '%' . $search_query . '%')
+            ->orWhereHas('subject', function($q) use ($search_query) {
                 $q->where('name', 'like', '%' . $search_query . '%');
                 foreach (explode(' ', $search_query) as $item)
                 {
@@ -22,6 +22,6 @@ class PostSearchController extends Controller
             })
             ->get();
 
-        return response()->view('search.results', ['versions' => $versions]);
+        return response()->view('search.results', ['past_papers' => $past_papers]);
     }
 }

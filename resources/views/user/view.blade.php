@@ -12,15 +12,15 @@
     <div class="content-row">
         <div class="container">
             <div class="alert alert-warning">
-                <p>This user has very few points. Be wary of reviews.</p>
+                <p>This user has very few points. Be wary of answers.</p>
             </div>
         </div>
     </div>
     @endif
     <div class="content-row">
         <div class="container">
-            <h2>Reviews</h2>
-            @include('segment.reviews', ['reviews' => $user->reviews->all()])
+            <h2>Answers</h2>
+            @include('segment.answers', ['answers' => $user->answers->all()])
         </div>
     </div>
     <div class="content-row-grey">

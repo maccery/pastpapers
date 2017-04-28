@@ -21,11 +21,11 @@ class Tag extends Model
     }
 
     /**
-     * Get all of the reviews that are assigned this tag.
+     * Get all of the answers that are assigned this tag.
      */
-    public function reviews()
+    public function answers()
     {
-        return $this->morphedByMany('App\Review', 'taggable');
+        return $this->morphedByMany('App\Answer', 'taggable');
     }
 
     public function badgeColor()

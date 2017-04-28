@@ -30,15 +30,15 @@ class User extends Authenticatable
     ];
 
     /**
-     * Returns all the reviews for all versions
+     * Returns all the answers for all past_papers
      */
-    public function reviews()
+    public function answers()
     {
-        return $this->hasMany('App\Review');
+        return $this->hasMany('App\Answer');
     }
 
     /**
-     * Returns all the votes on reviews by this author
+     * Returns all the votes on answers by this author
      */
     public function votes()
     {

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostReview extends FormRequest
+class PostCreateSubject extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class PostReview extends FormRequest
     public function rules()
     {
         return [
-            'description' => 'required|min:80',
-            'title' => 'required|min:30|max:255',
-            'negative' => 'sometimes',
-            'positive' => 'sometimes',
+            'name' => 'required|string|unique:subjects,name',
         ];
     }
 }

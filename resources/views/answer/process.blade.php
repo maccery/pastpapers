@@ -8,8 +8,8 @@
                     <h3 class="panel-title">Users contribute data</h3>
                 </div>
                 <div class="panel-body">
-                    This can be in the form of a review, a new piece of software or a data point (such
-                    as when a piece of software was released)
+                    This can be in the form of a answer, a new piece of subject or a data point (such
+                    as when a piece of subject was released)
                 </div>
             </div>
             <div class="panel panel-default">

@@ -12,7 +12,7 @@
             <textarea class="form-control" rows="8" id="answer" name="answer" class="input-group input-lg" placeholder="Answer to question here">{{ old('answer') }}</textarea>
         </div>
         <p><small>Submit as <b>{{ Auth::user()->name }}</b></small></p>
-        <button class="btn btn-default">Review</button>
+        <button class="btn btn-default">Answer</button>
         {{ csrf_field() }}
     </form>
     <div class="padding">

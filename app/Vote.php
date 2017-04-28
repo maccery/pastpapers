@@ -22,9 +22,9 @@ class Vote extends Model
         return $this->morphTo();
     }
 
-    public function review()
+    public function answer()
     {
-        return $this->belongsTo('App\Review');
+        return $this->belongsTo('App\Answer');
     }
 
     public function author()

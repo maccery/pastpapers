@@ -1,18 +1,18 @@
-@if(!$version->confirmed_real)
+@if(!$past_paper->confirmed_real)
 <div class="alert alert-danger">
-    <p>This software has not been confirmed as real yet and therefore can't be reviewed yet. Software versions are crowd-sourced on Meagle. To find out
-    more about the process of review, read <a href="{{ route('process') }}">here</a>.
+    <p>This subject has not been confirmed as real yet and therefore answers can't be added  yet. Past papers are crowd-sourced on Meagle. To find out
+    more about the process of answer, read <a href="{{ route('process') }}">here</a>.
 </div>
-<p>Does this piece of software exist?</p>
-@include('review.version_vote', ['voting_type' => 'version', 'version' => $version])
-@elseif(!$version->confirmed_release_date)
+<p>Does this subject exist?</p>
+@include('answer.past_paper_vote', ['voting_type' => 'past_paper', 'past_paper' => $past_paper])
+@elseif(!$past_paper->confirmed_release_date)
 <div class="alert alert-warning">
-        <p>This software has not got a confirmed release date yet. Therefore no reviews can be left yet. Release dates are crowd-sourced on Meagle. To find out
-            more about the process of review, read <a href="{{ route('process') }}">here</a>.</p>
+        <p>This past paper has not got a confirmed release date yet. Therefore no answers can be left yet. Release dates are crowd-sourced on Meagle. To find out
+            more about the process of answer, read <a href="{{ route('process') }}">here</a>.</p>
 </div>
-@include('browse.suggest_date', ['version' => $version])
-@elseif(!$version->isReleased())
+@include('browse.suggest_date', ['past_paper' => $past_paper])
+@elseif(!$past_paper->isReleased())
 <div class="alert alert-warning">
-        <p>This software has not been released yet. Therefore no reviews can be left yet.</p>
+        <p>This past paper has not been released yet. Therefore no answers can be left yet.</p>
 </div>
 @endif

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostCreateSoftware;
+use App\Http\Requests\PostCreateSubject;
 
-class PostCreateSoftwareController extends Controller
+class PostCreateSubjectController extends Controller
 {
-    public function store(PostCreateSoftware $request)
+    public function store(PostCreateSubject $request)
     {
-        \App\Software::create([
+        \App\Subject::create([
             'name' => $request->input('name'),
             'user_id' => $request->user()->id,
         ]);

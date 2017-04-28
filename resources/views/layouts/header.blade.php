@@ -13,11 +13,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="@yield('description', "Meagle is home to completely impartial software reviews, surfacing expert opinion from people who matter the most.")"/>
+<meta name="description" content="@yield('description', "Meagle is home to completely impartial subject answers, surfacing expert opinion from people who matter the most.")"/>
 <meta property="og:image" content="{{ asset('images/horizontal-logo.png', true) }}">
-<meta property="og:title" content="@yield('title','')Meagle: Impartial Software Reviews">
-<meta property="og:description" content="@yield('description', "Meagle is home to completely impartial software reviews, surfacing expert opinion from people who matter the most.")">
-<title>@yield('title','')Meagle: Impartial Software Reviews</title>
+<meta property="og:title" content="@yield('title','')Meagle: Impartial Software Answers">
+<meta property="og:description" content="@yield('description', "Meagle is home to completely impartial subject answers, surfacing expert opinion from people who matter the most.")">
+<title>@yield('title','')Meagle: Crowdsourced Past Paper Solutions</title>
 <link rel="stylesheet" type="text/css" href="{{ secure_asset_production(elixir('css/app.css')) }}">
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

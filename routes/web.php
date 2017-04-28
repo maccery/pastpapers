@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Software;
+use App\Subject;
 use App\Vote;
 use Illuminate\Http\Request;
 
@@ -29,7 +29,7 @@ Route::group(['middleware' => 'web'], function() {
     })->name('help');
 
     Route::get('/process', function () {
-        return view('review.process');
+        return view('answer.process');
     })->name('process');
 
     Route::post('/search', 'PostSearchController@search')->name('search');
@@ -38,69 +38,69 @@ Route::group(['middleware' => 'web'], function() {
         return view('welcome');
     });
 
-    Route::get('/review/{review}', function (App\Review $review) {
-        return view('review/index', ['review' => $review]);
-    })->name('review');
+    Route::get('/answer/{answer}', function (App\Answer $answer) {
+        return view('answer/index', ['answer' => $answer]);
+    })->name('answer');
 
     Route::get('/browse', function () {
-        $softwares = Software::orderBy('name', 'asc')->get();
-        return view('browse/index', ['softwares' => $softwares]);
+        $subjects = Subject::orderBy('name', 'asc')->get();
+        return view('browse/index', ['subjects' => $subjects]);
     })->name('browse');
 
-    Route::get('/browse/{software}', function (App\Software $software) {
-        $versions = $software->versions;
+    Route::get('/browse/{subject}', function (App\Subject $subject) {
+        $past_papers = $subject->past_papers;
 
-        return view('browse/versions', ['software' => $software, 'versions' => $versions]);
+        return view('browse/past_papers', ['subject' => $subject, 'past_papers' => $past_papers]);
     })->name('browse_name');
 
-    Route::get('/browse/{software}/{version}', function (App\Software $software, App\Version $version) {
-        $reviews = $version->reviews->sortByDesc(function ($reviews) {
-            return $reviews->votes->sum('vote');
+    Route::get('/browse/{subject}/{past_paper}', function (App\Subject $subject, App\PastPaper $past_paper) {
+        $answers = $past_paper->answers->sortByDesc(function ($answers) {
+            return $answers->votes->sum('vote');
         });
 
 
         return view('browse/view', [
-            'software' => $software,
-            'reviews' => $reviews,
-            'current_version' => $version
+            'subject' => $subject,
+            'answers' => $answers,
+            'current_past_paper' => $past_paper
         ]);
-    })->name('browse_by_version');
+    })->name('browse_by_past_paper');
 
-    Route::get('/unconfirmed/{software}', function (App\Software $software) {
-        $reviews = $software->reviews->sortByDesc(function ($reviews) {
-            return $reviews->votes->sum('vote');
+    Route::get('/unconfirmed/{subject}', function (App\Subject $subject) {
+        $answers = $subject->answers->sortByDesc(function ($answers) {
+            return $answers->votes->sum('vote');
         });
-        $versions = $software->versions;
+        $past_papers = $subject->past_papers;
 
-        return view('browse/view', ['software' => $software, 'reviews' => $reviews, 'versions' => $versions]);
-    })->name('unconfirmed_versions');
+        return view('browse/view', ['subject' => $subject, 'answers' => $answers, 'past_papers' => $past_papers]);
+    })->name('unconfirmed_past_papers');
 
-    Route::get('/suggest/{version}', function (App\Version $version) {
-        return view('browse/suggest_date', ['version' => $version]);
+    Route::get('/suggest/{past_paper}', function (App\PastPaper $past_paper) {
+        return view('browse/suggest_date', ['past_paper' => $past_paper]);
     })->name('suggest_dates');
 
-    Route::get('/create_version/{software}', function (App\Software $software) {
-        return view('browse/create_version', ['software' => $software]);
-    })->name('create_version');
+    Route::get('/create_past_paper/{subject}', function (App\Subject $subject) {
+        return view('browse/create_past_paper', ['subject' => $subject]);
+    })->name('create_past_paper');
 
-    Route::get('/create_software', function () {
-        return view('browse/create_software');
-    })->name('create_software');
+    Route::get('/create_subject', function () {
+        return view('browse/create_subject');
+    })->name('create_subject');
 
     Route::get('/user/{user}', function (App\User $user) {
         return view('user/view', ['user' => $user]);
     })->name('view_user');
 
 
-    Route::post('/post', 'PostController@store')->middleware('auth')->name('post_review');
+    Route::post('/post', 'PostController@store')->middleware('auth')->name('post_answer');
     Route::post('/post_create_question', 'PostCreateQuestionController@store')->middleware('auth')->name('post_question');
     Route::post('/post_suggest_date', 'PostSuggestDateController@store')->middleware('auth')->name('post_suggest_date');
     Route::post('/post_create_verison',
-        'PostCreateVersionController@store')->middleware('auth')->name('post_create_version');
-    Route::post('/post_create_software',
-        'PostCreateSoftwareController@store')->middleware('auth')->name('post_create_software');
+        'PostCreatePastPaperController@store')->middleware('auth')->name('post_create_past_paper');
+    Route::post('/post_create_subject',
+        'PostCreateSubjectController@store')->middleware('auth')->name('post_create_subject');
 
-    Route::get('/vote/{type}/{votable_id}/{vote}', ['uses' => 'PostVoteController@store'])->name('vote_review');
+    Route::get('/vote/{type}/{votable_id}/{vote}', ['uses' => 'PostVoteController@store'])->name('vote_answer');
 
     Auth::routes();
 

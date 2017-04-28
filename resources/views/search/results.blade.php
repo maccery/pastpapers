@@ -4,15 +4,15 @@
 <div class="content-row">
     <div class="container">
         <h1>Search results</h1>
-        @if(count($versions) == 0)
+        @if(count($past_papers) == 0)
             <p>No results found. Here are some tips...</p>
             @include('search.tips')
         @else
             <table class="table">
-            @foreach($versions as $version)
+            @foreach($past_papers as $past_paper)
                 <tr>
-                    <td><a href="{{ route('browse_by_version', ['software' => $version->software->id, 'version' => $version->id]) }}">{{ $version->software->name }} {{ $version->version }}</a></td>
-                    <td>{{ $version->created_at->diffForHumans() }}</td>
+                    <td><a href="{{ route('browse_by_past_paper', ['subject' => $past_paper->subject->id, 'past_paper' => $past_paper->id]) }}">{{ $past_paper->subject->name }} {{ $past_paper->past_paper }}</a></td>
+                    <td>{{ $past_paper->created_at->diffForHumans() }}</td>
                 </tr>
             @endforeach
             </table>

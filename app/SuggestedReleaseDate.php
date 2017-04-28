@@ -8,24 +8,24 @@ class SuggestedReleaseDate extends Votable
 {
 
     protected $fillable = [
-        'id', 'release_date', 'user_id', 'version_id'
+        'id', 'release_date', 'user_id', 'past_paper_id'
     ];
 
-    public function version()
+    public function past_paper()
     {
-        return $this->belongsTo('App\Version');
+        return $this->belongsTo('App\PastPaper');
     }
 
     public function confirmedReal()
     {
-        $version = $this->version;
-        $version->confirmed_release_date = True;
-        $version->release_date = $this->release_date;
-        $version->save();
+        $past_paper = $this->past_paper;
+        $past_paper->confirmed_release_date = True;
+        $past_paper->release_date = $this->release_date;
+        $past_paper->save();
     }
 
     public function getRouteAttribute(){
-        return route('browse_by_version', ['software' => 2, 'version' => $this->version]);
+        return route('browse_by_past_paper', ['subject' => 2, 'past_paper' => $this->past_paper]);
     }
 
     public function getFullNameAttribute() {
