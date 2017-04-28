@@ -3,7 +3,7 @@
     <div class="content-row-black">
         <div class="container">
             <ul class="list list-inline">
-                <li><a href="{{ route('about') }}">What is Meagle?</a></li>
+                <li><a href="{{ route('about') }}">What is PastPaper?</a></li>
                 <li class="pull-right">
                     <a href="{{ route('register') }}">{{ (Auth::user()) ? '' : 'Register'}}</a>
                 </li>
@@ -25,7 +25,7 @@
     </div>
     <div class="content-row">
         <div class="container">
-            <h2>Meagle is home to crowdsourced subject answers</h2>
+            <h2>PastPaper is home to crowdsourced subject answers</h2>
             <p>
                 We’re a self-moderating community of answers to past paper questions
             </p>

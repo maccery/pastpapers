@@ -2,7 +2,7 @@
 @section('content')
     <div class="content-row">
         <div class="container">
-            <h1>How crowd-sourcing works on Meagle</h1>
+            <h1>How crowd-sourcing works on PastPaper</h1>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Users contribute data</h3>

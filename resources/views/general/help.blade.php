@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Help | ')
-@section('description', 'Get help or advice on how to use Meagle.')
+@section('description', 'Get help or advice on how to use PastPaper.')
 @section('content')
     <div class="content-row">
         <div class="container">

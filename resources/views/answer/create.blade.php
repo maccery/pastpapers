@@ -26,7 +26,7 @@
         </div>
     @else
         <h3>Have you done this past paper?</h3>
-        <p>Meagle answers are provided by people like yourself: <a href="{{ route('register') }}">register</a> here to share your knowledge with the world.</p>
+        <p>PastPaper answers are provided by people like yourself: <a href="{{ route('register') }}">register</a> here to share your knowledge with the world.</p>
     @endif
 @endif
 <script>
