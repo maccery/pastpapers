@@ -15,7 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="@yield('description', "PastPaper is home to completely impartial subject answers, surfacing expert opinion from people who matter the most.")"/>
 <meta property="og:image" content="{{ asset('images/horizontal-logo.png', true) }}">
-<meta property="og:title" content="@yield('title','')PastPaper: Impartial Software Answers">
+<meta property="og:title" content="@yield('title','')PastPaper: Crowdsourced Past Paper Solutions">
 <meta property="og:description" content="@yield('description', "PastPaper is home to completely impartial subject answers, surfacing expert opinion from people who matter the most.")">
 <title>@yield('title','')PastPaper: Crowdsourced Past Paper Solutions</title>
 <link rel="stylesheet" type="text/css" href="{{ secure_asset_production(elixir('css/app.css')) }}">

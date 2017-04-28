@@ -25,7 +25,7 @@
     </div>
     <div class="content-row">
         <div class="container">
-            <h2>PastPaper is home to crowdsourced subject answers</h2>
+            <h2>PastPaper is home to crowdsourced answers to past paper questions</h2>
             <p>
                 We’re a self-moderating community of answers to past paper questions
             </p>
