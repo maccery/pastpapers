@@ -16,7 +16,7 @@
                     <small>{{ $answer->created_at->diffForHumans() }}</small></h4>
                     <?php $paragraphs = explode(PHP_EOL, $answer->description); ?>
                     @foreach($paragraphs as $paragraph)
-                        <p>{{ $paragraph }}</p>
+                        @markdown($paragraph)
                     @endforeach
                     <p>@include('segment.tags', ['tags' => $answer->tags])</p>
                 </td>

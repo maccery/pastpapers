@@ -168,7 +168,7 @@ return [
          */
 
         browner12\helpers\HelperServiceProvider::class,
-        Haleks\Markdown\MarkdownServiceProvider::class,
+        Indal\Markdown\MarkdownServiceProvider::class,
         //
 
         /*
@@ -227,7 +227,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Markdown' => Haleks\Markdown\Facades\Markdown::class,
+        'Markdown' => Indal\Markdown\Facade::class,
 
     ],
 

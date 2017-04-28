@@ -1,72 +1,56 @@
 <?php
 
 return [
-
+    
     /*
     |--------------------------------------------------------------------------
-    | Enable Markdown Tags
+    | Escape output
     |--------------------------------------------------------------------------
     |
-    | This option specifies if you want to extend the blade template with
-    | markdown specific "curly" braces '{%' and '%}'.  This is a short-cut
-    | to having to call the facade inside blade "curly" braces.
-    |
-    | Default: true
+    | This option controls whether or not JavaScript in anchor tags should be
+    | escaped or not, e.g. markdown like "[Link](javascript:alert('xss'))".
     |
     */
 
-    'tags' => true,
+    'xss' => true,
 
     /*
     |--------------------------------------------------------------------------
-    | Enable Views Extensions
+    | Automatically link URLs
     |--------------------------------------------------------------------------
     |
-    | This option specifies if the view integration is enabled so you can write
-    | markdown views and have them rendered as html. The following view
-    | extensions will be supported: ".md", ".md.php", and ".md.blade.php".
-    |
-    | Default: true
+    | This option controls the automatic anchor inserting on URLs in your
+    | markdown. If this option is true, all websites in your markdown
+    | will automatically be turned into anchor tags in your output.
     |
     */
 
-    'views' => true,
+    'urls' => true,
 
     /*
     |--------------------------------------------------------------------------
-    | Include CommonMark Configuration
+    | Escape HTML markup
     |--------------------------------------------------------------------------
     |
-    | This option specifies the configuration options for the CommonMark
-    | converter. The following configuration will affect how CommonMark will
-    | parse your markdown.
-    |
-    | For more info on the possible configuration options:
-    | http://commonmark.thephpleague.com/configuration/
-    |
-    | Default: none
+    | This option controls whether or not HTML entities should be escaped.
+    | If this option is false, then users could be able to insert any
+    | arbitrary HTML/scripts which may lead to XSS vulnerabilities.
     |
     */
 
-    'configurations' => [
-        //
-    ],
+    'escape_markup' => true,
 
     /*
     |--------------------------------------------------------------------------
-    | Include CommonMark Extensions
+    | Automatically add line breaks
     |--------------------------------------------------------------------------
     |
-    | This option specifies the extensions to add to the CommonMark converter.
-    | After extension is loaded you will be able to use those extension in the
-    | markdown views or blade markdown tags
-    |
-    | Default: none
+    | This option controls the automatic insertion of single line breaks
+    | like GitHub Flavored Markdown (GFM). If this option is false,
+    | users must enter two line breaks to start a new paragraph.
     |
     */
 
-    'extensions' => [
-        //
-    ],
+    'breaks' => false,
 
 ];
