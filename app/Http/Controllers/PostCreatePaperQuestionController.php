@@ -13,7 +13,7 @@ class PostCreatePaperQuestionController extends Controller
             'question' => $request->input('name'),
             'past_paper_id' => $request->input('past_paper_id'),
             'user_id' => $request->user()->id,
-            'confirmed_real' => 1, 
+            'confirmed_real' => 1,
         ]);
 
         $past_paper = PastPaper::where(['id' => $request->input('past_paper_id')])->first();

@@ -25,8 +25,7 @@ class PostAnswer extends FormRequest
     {
         return [
             'description' => 'required|min:80',
-            'negative' => 'sometimes',
-            'positive' => 'sometimes',
+            'tags' => 'sometimes',
         ];
     }
 }

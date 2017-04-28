@@ -25,7 +25,7 @@ class PostCreatePastPaper extends FormRequest
     {
         return [
             'subject_id' => 'exists:subjects,id',
-            'past_paper_name' => 'required|string|unique:past_papers,past_paper',
+            'past_paper_name' => 'required|string',
         ];
     }
 }

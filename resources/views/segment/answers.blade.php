@@ -8,7 +8,6 @@
                     @include('answer.vote', ['answer' => $answer])
                 </td>
                 <td class="answer">
-                    <a href="{{ route('answer', ['answer' => $answer]) }}"><h3>"{{ $answer->title }}"</h3></a>
                     <h4>- written by <a href="{{ route('view_user', $answer->author->id) }}">{{ $answer->author->name }}</a>,
                         @if($answer->author->isTopUser())
                             {{ $answer->author->isTopUser() }} <img data-toggle="tooltip" title="Verified users are answerers from reputable background sources, such as {{ $answer->author->isTopUser() }}" height="20" src="{{ secure_asset_production('images/verified.png') }}">

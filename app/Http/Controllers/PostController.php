@@ -17,15 +17,9 @@ class PostController extends Controller
             'user_id' => $request->user()->id,
         ]);
 
-        $positive_tags = explode(',', $request->input('positive'));
+        $positive_tags = explode(',', $request->input('tags'));
         foreach ($positive_tags as $positive_tag) {
-            $tag = Tag::firstOrCreate(['type' => 'positive', 'name' => trim($positive_tag)]);
-            $subject->tags()->save($tag);
-        }
-
-        $positive_tags = explode(',', $request->input('negative'));
-        foreach ($positive_tags as $positive_tag) {
-            $tag = Tag::firstOrCreate(['type' => 'negative', 'name' => trim($positive_tag)]);
+            $tag = Tag::firstOrCreate(['type' => 'generic', 'name' => trim($positive_tag)]);
             $subject->tags()->save($tag);
         }
 

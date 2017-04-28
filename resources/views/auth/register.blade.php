@@ -2,6 +2,9 @@
 @section('title', 'Register | ')
 
 @section('content')
+
+<div class="content-row">
+<div class="container">
 <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
     {{ csrf_field() }}
 
@@ -63,4 +66,5 @@
         </div>
     </div>
 </form>
+</div></div>
 @endsection

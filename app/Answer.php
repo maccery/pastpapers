@@ -13,10 +13,9 @@ class Answer extends Votable
         'user_id',
         'paper_question_id',
         'subject_id',
-        'title',
     ];
 
-    public function past_paper()
+    public function paper_question()
     {
         return $this->belongsTo('App\PaperQuestion');
     }
@@ -27,11 +26,11 @@ class Answer extends Votable
     }
 
     public function getRouteAttribute(){
-        return route('answer', ['answer' => $this]);
+        return route('browse_answers', ['subject' => $this->subject, 'past_paper' => $this->paper_question->past_paper, 'paper_question' => $this->past_paper]);
     }
 
     public function getFullNameAttribute() {
-        return $this->title;
+        return 'Answer: ' . $this->paper_question_id;
     }
 
     public function confirmedReal() {}

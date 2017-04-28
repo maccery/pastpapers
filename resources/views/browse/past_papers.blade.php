@@ -11,10 +11,10 @@
             </ul>
             @if(!$subject->confirmed_real)
                 <div class="alert alert-danger">
-                    <p>This past paper has not been confirmed as real yet. Subjects are crowd-sourced on Meagle. To find out
+                    <p>This subject has not been confirmed as real yet. Subjects are crowd-sourced on Meagle. To find out
                         more about the process of answer, read <a href="{{ route('process') }}">here</a>.
                 </div>
-                <p>Does this past paper exist?</p>
+                <p>Does this subject exist?</p>
                 @include('answer.past_paper_vote', ['voting_type' => 'subject', 'past_paper' => $subject])
             @else
             <p>Don't see the past paper of {{ $subject->name }} you're looking for? <a href="{{ route('create_past_paper', ['subject' => $subject]) }}">Add it</a></p>

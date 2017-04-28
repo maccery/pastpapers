@@ -2,8 +2,7 @@
 @section('content')
     <div class="content-row">
         <div class="container">
-            <h1>Add a subject</h1>
-            <p><small>e.g EXC</small></p>
+            <h1>Add a question to this paper</h1>
             <ul class="breadcrumb">
                 <li><a href="{{ route('browse') }}">Browse</a></li>
                 <li><a href="{{ route('browse_name', ['subject' => $past_paper->subject]) }}">{{ $past_paper->subject->name }}</a></li>
