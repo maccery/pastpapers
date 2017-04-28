@@ -12,22 +12,11 @@
                     <li><a href="{{ route('browse_by_past_paper', ['subject' => $subject, 'past_paper' => $current_past_paper]) }}">{{ $current_past_paper->past_paper }}</a></li>
                     <li class="active">{{ $paper_question->question }}</li>
                 </ul>
-                @include('segment.confirmation_warnings', ['past_paper' => $current_past_paper])
-                @if(isset($current_past_paper) and $paper_question->canLeaveAnswer())
-                    @include('segment.answers', ['answers' => $answers->slice(0, 4)])
-                    @include('segment.other_answers', ['answers' => $answers->slice(4)])
-                @endif
+                @include('segment.answers', ['answers' => $answers->slice(0, 4)])
+                @include('segment.other_answers', ['answers' => $answers->slice(4)])
             </div>
             <div class="col-sm-3 hidden-xs">
-                @if(!$paper_question->confirmed_real)
-                    <p>Does this exist?</p>
-                    @include('answer.past_paper_vote', ['voting_type' => 'subject', 'past_paper' => $subject])
-                @endif
-                @if(isset($current_past_paper) and !$paper_question->canLeaveAnswer())
-                    @include('segment.past_paper_info', ['past_paper' => $current_past_paper])
-                @else
-                    @include('segment.tags', ['tags' => $paper_question->topTags()])
-                @endif
+                @include('segment.tags', ['tags' => $paper_question->topTags()])
             </div>
         </div>
     </div>

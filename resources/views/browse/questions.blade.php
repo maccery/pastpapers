@@ -7,12 +7,14 @@
             <ul class="breadcrumb">
                 <li><a href="{{ route('browse') }}">Browse</a></li>
                 <li><a href="{{ route('browse_name', ['subject' => $subject]) }}">{{ $subject->name }}</a></li>
-                <li class="active">{{ $subject->name }} {{ $current_past_paper->past_paper }}</li>
+                <li class="active">{{ $current_past_paper->past_paper }}</li>
             </ul>
-            @if(!$current_past_paper->confirmed_real)
-                <p>Does this exist?</p>
+                @if(!$current_past_paper->confirmed_real)
+                <div class="alert alert-warning">
+                    <p>Does this past paper exist? <small>Voting helps us remove spam</small></p>
                 @include('answer.past_paper_vote', ['voting_type' => 'past_paper', 'past_paper' => $current_past_paper])
-            @else
+                </div>
+            @endif
             <p>Don't see the question you want? <a href="{{ route('create_paper_question', ['past_paper' => $current_past_paper]) }}">Add it</a></p>
             <table class="table table-responsive">
                 @foreach($current_past_paper->paper_questions()->orderBy('question', 'asc')->get() as $paper_question)
@@ -22,7 +24,6 @@
                 @endforeach
 
             </table>
-            @endif
         </div>
     </div>
 @endsection
