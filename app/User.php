@@ -68,8 +68,8 @@ class User extends Authenticatable
     }
 
     public function updateVotingPower() {
+        $this->points = $this->votes->sum('vote');
         $new_voting_power = $this->getVotingPower();
-        //$this->points = $this->votes->sum('vote');
         $this->voting_power = $new_voting_power;
         $this->save();
     }

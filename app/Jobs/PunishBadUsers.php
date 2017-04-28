@@ -37,6 +37,7 @@ class PunishBadUsers implements ShouldQueue
     public function handle()
     {
 
+        echo 'hyyey';
         // Make a system vote
         $alert = Alert::firstOrCreate([
             'description' => 'For incorrectly voting on ' . $this->votable->id,

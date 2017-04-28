@@ -64,6 +64,9 @@ class UserVotedListener
             }
             dispatch(new RewardUsers(collect($users), $votable));
         }
+
+        $user = $votable->author;
+        $user->updateVotingPower($user);
     }
 
 }
