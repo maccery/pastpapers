@@ -20,11 +20,9 @@
             <p>Don't see the past paper of {{ $subject->name }} you're looking for? <a href="{{ route('create_past_paper', ['subject' => $subject]) }}">Add it</a></p>
             <table class="table">
                 <th>Past paper</th>
-                <th>Release date</th>
                 @foreach ($past_papers as $past_paper)
                     <tr>
                         <td><a href="{{ route('browse_by_past_paper', ['subject' => $past_paper->subject->id, 'past_paper' => $past_paper->id]) }}">{{ $past_paper->subject->name }} {{ $past_paper->past_paper }}</a></td>
-                        <td>{{ $past_paper->release_date or '' }}</td>
                     </tr>
                 @endforeach
             </table>

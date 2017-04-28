@@ -15,7 +15,7 @@
             @else
             <p>Don't see the question you want? <a href="{{ route('create_paper_question', ['past_paper' => $current_past_paper]) }}">Add it</a></p>
             <table class="table table-responsive">
-                @foreach($current_past_paper->paper_questions as $paper_question)
+                @foreach($current_past_paper->paper_questions()->orderBy('question', 'asc')->get() as $paper_question)
                 <tr>
                     <td><a href="{{ route('browse_answers', ['subject' => $subject, 'past_paper' => $current_past_paper, 'paper_question' => $paper_question]) }}">{{ $paper_question->question }}</a></td>
                 </tr>
