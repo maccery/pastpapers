@@ -54,17 +54,24 @@ Route::group(['middleware' => 'web'], function() {
     })->name('browse_name');
 
     Route::get('/browse/{subject}/{past_paper}', function (App\Subject $subject, App\PastPaper $past_paper) {
-        $answers = $past_paper->answers->sortByDesc(function ($answers) {
-            return $answers->votes->sum('vote');
-        });
 
-
-        return view('browse/view', [
+        return view('browse/questions', [
             'subject' => $subject,
-            'answers' => $answers,
             'current_past_paper' => $past_paper
         ]);
     })->name('browse_by_past_paper');
+
+    Route::get('/browse/{subject}/{past_paper}/{paper_question}', function (App\Subject $subject, App\PastPaper $past_paper, App\PaperQuestion $paper_question) {
+        $answers = $paper_question->answers->sortByDesc(function ($answers) {
+            return $answers->votes->sum('vote');
+        });
+        return view('browse/view', [
+            'subject' => $subject,
+            'answers' => $answers,
+            'current_past_paper' => $past_paper,
+            'paper_question' => $paper_question,
+        ]);
+    })->name('browse_answers');
 
     Route::get('/unconfirmed/{subject}', function (App\Subject $subject) {
         $answers = $subject->answers->sortByDesc(function ($answers) {
@@ -87,6 +94,10 @@ Route::group(['middleware' => 'web'], function() {
         return view('browse/create_subject');
     })->name('create_subject');
 
+    Route::get('/create_paper_question/{past_paper}', function (App\PastPaper $past_paper) {
+        return view('browse/create_paper_question', ['past_paper' => $past_paper]);
+    })->name('create_paper_question');
+
     Route::get('/user/{user}', function (App\User $user) {
         return view('user/view', ['user' => $user]);
     })->name('view_user');
@@ -99,6 +110,8 @@ Route::group(['middleware' => 'web'], function() {
         'PostCreatePastPaperController@store')->middleware('auth')->name('post_create_past_paper');
     Route::post('/post_create_subject',
         'PostCreateSubjectController@store')->middleware('auth')->name('post_create_subject');
+    Route::post('/post_create_paper_question',
+        'PostCreatePaperQuestionController@store')->middleware('auth')->name('post_create_paper_question');
 
     Route::get('/vote/{type}/{votable_id}/{vote}', ['uses' => 'PostVoteController@store'])->name('vote_answer');
 

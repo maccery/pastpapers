@@ -14,7 +14,12 @@ class ChangeAnswersVersionId extends Migration
     public function up()
     {
         Schema::table('answers', function (Blueprint $table) {
-            $table->renameColumn('version_id', 'past_paper_id');
+            $table->dropForeign('reviews_version_id_foreign');
+            $table->dropColumn('version_id');
+
+            $table->integer('paper_question_id')->unsigned();
+            $table->foreign('paper_question_id')->references('id')->on('paper_questions');
+
         });
     }
 
@@ -26,7 +31,10 @@ class ChangeAnswersVersionId extends Migration
     public function down()
     {
         Schema::table('answers', function (Blueprint $table) {
-            $table->renameColumn('past_paper_id', 'version_id');
+            $table->integer('version_id')->unsigned();
+            $table->foreign('version_id')->references('id')->on('versions');
+            $table->dropForeign('answers_paper_question_id_foreign');
+            $table->dropColumn('paper_questions_id');
         });
     }
 }

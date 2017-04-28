@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostAnswer extends FormRequest
+class PostCreatePaperQuestion extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class PostAnswer extends FormRequest
     public function rules()
     {
         return [
-            'description' => 'required|min:80',
-            'negative' => 'sometimes',
-            'positive' => 'sometimes',
+            'past_paper_id' => 'exists:past_papers,id',
+            'name' => 'required|string',
         ];
     }
 }

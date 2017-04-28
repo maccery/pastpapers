@@ -9,19 +9,18 @@
                 <ul class="breadcrumb">
                     <li><a href="{{ route('browse') }}">Browse</a></li>
                     <li><a href="{{ route('browse_name', ['subject' => $subject]) }}">{{ $subject->name }}</a></li>
-                    <li><a href="{{ route('browse_by_past_paper', ['subject' => $subject, 'past_paper' => $current_past_paper]) }}">{{ $current_past_paper->past_paper }}</a></li>
-                    <li class="active">{{ $paper_question->question }}</li>
+                    <li class="active">{{ $subject->name }} {{ $current_past_paper->past_paper }}</li>
                 </ul>
                 @include('segment.confirmation_warnings', ['past_paper' => $current_past_paper])
-                @if(isset($current_past_paper) and $paper_question->canLeaveAnswer())
-                    @if ($current_past_paper->negative > 0 or $paper_question->positive > 0)
-                    <h4><b>Verdict</b>: {{ $paper_question->verdict }}</h4>
+                @if(isset($current_past_paper) and $current_past_paper->canLeaveAnswer())
+                    @if ($current_past_paper->negative > 0 or $current_past_paper->positive > 0)
+                    <h4><b>Verdict</b>: {{ $current_past_paper->verdict }}</h4>
                     <div class="progress">
-                        <div class="progress-bar progress-bar-success" style="width: {{ $paper_question->percentagePositive }}%">
-                            <span class="sr-only">{{ $paper_question->percentagePositive }}% positive</span>
+                        <div class="progress-bar progress-bar-success" style="width: {{ $current_past_paper->percentagePositive }}%">
+                            <span class="sr-only">{{ $current_past_paper->percentagePositive }}% positive</span>
                         </div>
-                        <div class="progress-bar progress-bar-danger" style="width: {{ 100-$paper_question->percentagePositive }}%">
-                            <span class="sr-only">{{ 100-$paper_question->percentagePositive }}% negative</span>
+                        <div class="progress-bar progress-bar-danger" style="width: {{ 100-$current_past_paper->percentagePositive }}%">
+                            <span class="sr-only">{{ 100-$current_past_paper->percentagePositive }}% negative</span>
                         </div>
                     </div>
                     @endif
@@ -30,22 +29,21 @@
                 @endif
             </div>
             <div class="col-sm-3 hidden-xs">
-                @if(!$paper_question->confirmed_real)
+                @if(!$subject->confirmed_real)
                     <p>Does this exist?</p>
                     @include('answer.past_paper_vote', ['voting_type' => 'subject', 'past_paper' => $subject])
                 @endif
-                @if(isset($current_past_paper) and !$paper_question->canLeaveAnswer())
+                @if(isset($current_past_paper) and !$current_past_paper->canLeaveAnswer())
                     @include('segment.past_paper_info', ['past_paper' => $current_past_paper])
                 @else
-                    @include('segment.tags', ['tags' => $paper_question->topTags()])
                 @endif
             </div>
         </div>
     </div>
-    @if(isset($current_past_paper) and $paper_question->canLeaveAnswer())
+    @if(isset($current_past_paper) and $current_past_paper->canLeaveAnswer())
         <div class="content-row-grey">
             <div class="container">
-                @include('answer.create', ['paper_question' => $paper_question])
+                @include('answer.create', ['current_past_paper' => $current_past_paper])
             </div>
         </div>
     @endif

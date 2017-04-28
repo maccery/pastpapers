@@ -13,8 +13,7 @@ class PostController extends Controller
     {
         $subject = Answer::create([
             'description' => $request->input('description'),
-            'title' => $request->input('title'),
-            'past_paper_id' => $request->input('past_paper_id'),
+            'paper_question_id' => $request->input('paper_question_id'),
             'user_id' => $request->user()->id,
         ]);
 

@@ -1,15 +1,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-@if($current_past_paper->canLeaveAnswer())
+@if($paper_question->canLeaveAnswer())
     @if (Auth::User())
         <h3>{{ Auth::User()->name }}, have your say</h3>
         <form method="POST" action="{{ route('post_answer') }}">
             <div class="form-group">
-                <label for="title">Summarise your answer</label>
-                <input type="hidden" name="past_paper_id" value="{{ $current_past_paper->id }}">
-                <input class="form-control" id="title" name="title" class="input-group input-lg" placeholder="Answer title" value="{{ old('title') }}">
-            </div>
-            <div class="form-group">
+                <input type="hidden" name="paper_question_id" value="{{ $paper_question->id }}">
                 <label for="description">Answer body</label>
                 <textarea class="form-control" rows="8" id="description" name="description" class="input-group input-lg" placeholder="Your answer here">{{ old('description') }}</textarea>
             </div>

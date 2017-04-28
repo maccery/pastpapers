@@ -11,7 +11,7 @@ class Answer extends Votable
     protected $fillable = [
         'description',
         'user_id',
-        'past_paper_id',
+        'paper_question_id',
         'subject_id',
         'title',
     ];
