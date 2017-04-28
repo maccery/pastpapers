@@ -24,7 +24,7 @@ class PostAnswer extends FormRequest
     public function rules()
     {
         return [
-            'description' => 'required|min:80',
+            'description' => 'required',
             'tags' => 'sometimes',
         ];
     }
