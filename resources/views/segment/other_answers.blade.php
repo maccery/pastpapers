@@ -6,8 +6,7 @@
         </td>
         <td>
             <ul class="list list-unstyled list-inline small">
-                <li>"{{ $answer->title }}"</li>
-                <li><small><a href="{{ route('view_user', $answer->author->id) }}">{{ $answer->author->name }}</a></small></li>
+                <li><small><a href="{{ $answer->author->route }}">{{ $answer->author->name }}</a></small></li>
                 <li><small>{{ $answer->author->points }} points</small></li>
                 <li><small>{{ $answer->created_at->diffForHumans() }}</small></li>
             </ul>

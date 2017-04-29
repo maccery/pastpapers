@@ -14,10 +14,7 @@
                         @endif
                         <span class="label label-default">Level {{ $answer->author->level[0] }}/{{ $answer->author->level[1] }}</span>
                     <small>{{ $answer->created_at->diffForHumans() }}</small></h4>
-                    <?php $paragraphs = explode(PHP_EOL, $answer->description); ?>
-                    @foreach($paragraphs as $paragraph)
-                        @markdown($paragraph)
-                    @endforeach
+                    @markdown($answer->description)
                     <p>@include('segment.tags', ['tags' => $answer->tags])</p>
                 </td>
             </tr>

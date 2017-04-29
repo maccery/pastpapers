@@ -7,10 +7,7 @@
             <h1>Help</h1>
             @foreach($questions as $question)
                 <h2>{{ $question->question }}</h2>
-                <?php $paragraphs = explode(PHP_EOL, $question->answer); ?>
-                @foreach($paragraphs as $paragraph)
-                    <p>@markdown($paragraph)</p>
-                @endforeach
+                @markdown($question->answer)
                 @if(!$question->confirmed_real)
                     <p><small>Is this a good question?</small></p>
                 @endif

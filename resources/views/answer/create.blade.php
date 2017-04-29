@@ -6,7 +6,7 @@
         <form method="POST" action="{{ route('post_answer') }}">
             <div class="form-group">
                 <input type="hidden" name="paper_question_id" value="{{ $paper_question->id }}">
-                <label for="description">Answer body</label>
+                <label for="description">Answer body</label> <small>You can use Markdown. Hit the preview icon before submitting</small>
                 <textarea class="form-control" rows="8" id="description" name="description" class="input-group input-lg" placeholder="Your answer here">{{ old('description') }}</textarea>
             </div>
             <div class="form-group">
@@ -17,7 +17,8 @@
                 <p><small><a href="{{ url('/register') }}">Register</a> to submit</small></p>
             @else
                 <p><small>Submit as <b>{{ Auth::user()->name }}</b></small></p>
-                <button class="btn btn-default">Answer</button>
+                <button class="btn btn-default" onclick="simplemde.togglePreview(); return false;">Preview answer</button>
+                <button class="btn btn-primary">Answer</button>
             @endif
             {{ csrf_field() }}
         </form>
@@ -30,5 +31,10 @@
     @endif
 @endif
 <script>
-    var simplemde = new SimpleMDE({ element: document.getElementById("description") });
+    var simplemde = new SimpleMDE({
+        element: document.getElementById("description"),
+        toolbar: ["bold", "italic", "strikethrough",  "heading", "|", "code", "quote", "unordered-list", "ordered-list", "table", "link", "image", "preview"],
+        promptURLs: true,
+        spellChecker: false,
+    });
 </script>
