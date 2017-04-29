@@ -23,6 +23,11 @@
             <p>or <a href="{{ route('browse') }}">browse past papers</a></p>
         </div>
     </div>
+    <div class="content-row-dark-grey">
+        <div class="container text-center">
+            <small><b>Latest answer:</b> <a href="{{ $answer->route }}">{{ $answer->fullName }}</a> - <a href="{{ $answer->author->route }}">{{ $answer->author->name }}</a>, {{ $answer->created_at->diffForHumans() }}</small>
+        </div>
+    </div>
     <div class="content-row">
         <div class="container">
             <h2>PastPaper is home to crowdsourced answers to past paper questions</h2>

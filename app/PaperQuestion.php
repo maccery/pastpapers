@@ -19,6 +19,11 @@ class PaperQuestion extends Votable
         return $this->confirmed_real;
     }
 
+    public function past_paper()
+    {
+        return $this->belongsTo('App\PastPaper');
+    }
+
 
     public function topTags() {
         return Tag::whereIn('id', function ($query) {

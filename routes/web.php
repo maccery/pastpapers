@@ -16,7 +16,9 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'web'], function() {
     Route::get('/', function () {
-        return view('welcome');
+        $answer = \App\Answer::orderBy('created_at', 'desc')->first();
+
+        return view('welcome', ['answer' => $answer]);
     })->name('home');
 
     Route::get('/about', function () {

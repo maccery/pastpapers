@@ -2,8 +2,7 @@
 @section('content')
     <div class="content-row">
         <div class="container">
-            <h1>"{{ $answer->title }}"</h1>
-            <p>{{ $answer->past_paper->subject->name }} {{ $answer->past_paper->past_paper }} answer</p>
+            <h2>{{ $answer->fullName }}</h2>
             <ul class="list list-unstyled list-inline">
                 <li><a href="{{ route('view_user', $answer->author->id) }}">{{ $answer->author->name }}</a></li>
                 <li>

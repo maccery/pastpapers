@@ -26,11 +26,11 @@ class Answer extends Votable
     }
 
     public function getRouteAttribute(){
-        return route('browse_answers', ['subject' => $this->subject, 'past_paper' => $this->paper_question->past_paper, 'paper_question' => $this->past_paper]);
+        return route('browse_answers', ['subject' => $this->paper_question->past_paper->subject, 'past_paper' => $this->paper_question->past_paper, 'paper_question' => $this->paper_question]);
     }
 
     public function getFullNameAttribute() {
-        return 'Answer: ' . $this->paper_question_id;
+        return $this->paper_question->past_paper->subject->name . ' ' . $this->paper_question->past_paper->past_paper . ', Question ' . $this->paper_question->question;
     }
 
     public function confirmedReal() {}
