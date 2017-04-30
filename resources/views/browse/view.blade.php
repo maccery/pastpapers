@@ -12,6 +12,11 @@
                     <li><a href="{{ route('browse_by_past_paper', ['subject' => $subject, 'past_paper' => $current_past_paper]) }}">{{ $current_past_paper->past_paper }}</a></li>
                     <li class="active">{{ $paper_question->question }}</li>
                 </ul>
+                @if($current_past_paper->url)
+                    <p>
+                        <a target="_blank" href="{{ $current_past_paper->url }}"><button class="btn btn-primary">View past paper</button></a>
+                    </p>
+                @endif
                 @include('segment.answers', ['answers' => $answers->slice(0, 4)])
                 @include('segment.other_answers', ['answers' => $answers->slice(4)])
             </div>

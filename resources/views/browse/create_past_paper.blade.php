@@ -11,7 +11,12 @@
         <form method="POST" action="{{ route('post_create_past_paper') }}">
             <div class="form-group">
                 <input type="hidden" name="subject_id" value="{{ $subject->id }}">
-                <input class="form-control" rows="5" name="past_paper_name" class="input-group input-lg" placeholder="Enter past paper name here">
+                <label for="past_paper_name">Paper name</label> e.g May 2016
+                <input class="form-control" rows="5" name="past_paper_name" class="input-group input-lg" placeholder="Paper name">
+            </div>
+            <div class="form-group">
+                <label for="title">URL of paper</label> From the university past paper website
+                <input class="form-control"  name="url" class="input-group input-lg" placeholder="URL of past paper">
             </div>
             @if (Auth::guest())
                 <p><small><a href="{{ url('/register') }}">Register</a> to submit</small></p>
@@ -21,15 +26,6 @@
             @endif
             {{ csrf_field() }}
         </form>
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         @include('errors.generic')
     </div>
 </div>

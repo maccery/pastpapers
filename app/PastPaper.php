@@ -17,6 +17,7 @@ class PastPaper extends Votable
         'confirmed_release_date',
         'subject_id',
         'user_id',
+        'url',
     ];
 
     public function subject()

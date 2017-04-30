@@ -9,6 +9,11 @@
                 <li><a href="{{ route('browse_name', ['subject' => $subject]) }}">{{ $subject->name }}</a></li>
                 <li class="active">{{ $current_past_paper->past_paper }}</li>
             </ul>
+            @if($current_past_paper->url)
+            <p>
+                <a target="_blank" href="{{ $current_past_paper->url }}"><button class="btn btn-primary">View past paper</button></a>
+            </p>
+            @endif
                 @if(!$current_past_paper->confirmed_real)
                 <div class="alert alert-warning">
                     <p>Does this past paper exist? <small>Voting helps us remove spam</small></p>

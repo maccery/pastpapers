@@ -12,6 +12,7 @@ class PostCreatePastPaperController extends Controller
         $past_paper = \App\PastPaper::create([
             'subject_id' => $request->input('subject_id'),
             'past_paper' => $request->input('past_paper_name'),
+            'url' => $request->input('url'),
             'user_id' => $request->user()->id,
         ]);
 
