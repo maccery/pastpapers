@@ -36,5 +36,14 @@
         toolbar: ["bold", "italic", "strikethrough",  "heading", "|", "code", "quote", "unordered-list", "ordered-list", "table", "link", "image", "preview"],
         promptURLs: true,
         spellChecker: false,
+        renderingConfig: {
+            codeSyntaxHighlighting: true,
+        }
     });
 </script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">
+@endpush
