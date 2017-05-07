@@ -13,6 +13,7 @@ class PostCreatePastPaperController extends Controller
             'subject_id' => $request->input('subject_id'),
             'past_paper' => $request->input('past_paper_name'),
             'url' => $request->input('url'),
+            'solutions_url' => $request->input('solutions_url'),
             'user_id' => $request->user()->id,
         ]);
 

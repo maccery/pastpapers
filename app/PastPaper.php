@@ -18,6 +18,7 @@ class PastPaper extends Votable
         'subject_id',
         'user_id',
         'url',
+        'solutions_url',
     ];
 
     public function subject()

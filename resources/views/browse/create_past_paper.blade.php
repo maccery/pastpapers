@@ -18,6 +18,10 @@
                 <label for="title">URL of paper</label> From the university past paper website
                 <input class="form-control"  name="url" class="input-group input-lg" placeholder="URL of past paper">
             </div>
+            <div class="form-group">
+                <label for="title">URL of OFFICIAL solutions</label> Optional, only if they've been released
+                <input class="form-control"  name="solutions_url" class="input-group input-lg" placeholder="(Optional) URL of official solutions">
+            </div>
             @if (Auth::guest())
                 <p><small><a href="{{ url('/register') }}">Register</a> to submit</small></p>
             @else
