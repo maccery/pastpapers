@@ -5,9 +5,13 @@
 
 <div class="content-row">
 <div class="container">
+    <h1>Join the club</h1>
+    <p>No, you won't get any spammy emails. No, your information won't be sold.</p>
+</div></div>
+<div class="content-row-grey">
+    <div class="container">
 <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
     {{ csrf_field() }}
-
     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
         <label for="name" class="col-md-4 control-label">Name</label>
 

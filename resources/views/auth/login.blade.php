@@ -3,6 +3,7 @@
 @section('content')
 <div class="content-row">
     <div class="container">
+        <h2>Come on in!</h2>
         <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
 
@@ -56,6 +57,12 @@
                 </div>
             </div>
         </form>
+    </div>
+</div>
+<div class="content-row-grey">
+    <div class="container">
+        <h2>Haven't registered?</h2>
+        <p><a href="{{ route('register') }}">Registering</a> takes two seconds.</p>
     </div>
 </div>
 @endsection
